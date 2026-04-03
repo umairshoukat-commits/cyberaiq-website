@@ -1,0 +1,334 @@
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Footer from "@/components/Footer";
+
+// Topics exactly as on cyberaiq.com
+const areaOptions = ["AI", "Cloud", "Cyber", "Marketplace", "Quantum"];
+
+export default function ContactPage() {
+  const [formState, setFormState] = useState({
+    name: "", email: "", organization: "", role: "", area: "", message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  const inputClass =
+    "w-full px-4 py-3 rounded-xl text-[#F0F4F8] text-sm outline-none transition-all duration-200 placeholder:text-[#4a5568]";
+  const inputStyle = {
+    background: "rgba(255,255,255,0.04)",
+    border: "1px solid rgba(255,255,255,0.08)",
+  };
+
+  return (
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+    >
+      {/* Hero */}
+      <section className="pt-32 pb-16 px-6 relative overflow-hidden">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 50% at 60% 30%, rgba(244,121,32,0.08) 0%, rgba(43,126,193,0.05) 50%, transparent 80%)",
+          }}
+        />
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-2xl"
+          >
+            <span className="text-xs font-semibold tracking-[0.3em] uppercase text-[#F47920] mb-6 block">
+              Contact Us
+            </span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#F0F4F8] leading-tight tracking-[-0.02em] mb-6">
+              Start the{" "}
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #F47920, #2B7EC1)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                conversation
+              </span>
+            </h1>
+            <p className="text-[#8896AB] text-xl leading-relaxed">
+              Transformation starts with clarity. Our team is here to help you navigate
+              what&apos;s next.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Form + info */}
+      <section className="pt-8 pb-32 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
+          {/* Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="lg:col-span-3"
+          >
+            {submitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="p-10 rounded-2xl text-center"
+                style={{
+                  background: "rgba(244,121,32,0.05)",
+                  border: "1px solid rgba(244,121,32,0.2)",
+                }}
+              >
+                <div className="w-16 h-16 rounded-full bg-[#F47920]/10 border border-[#F47920]/30 flex items-center justify-center mx-auto mb-6">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12l4 4L19 7" stroke="#F47920" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-black text-[#F0F4F8] tracking-tight mb-3">Message Received</h2>
+                <p className="text-[#8896AB]">
+                  Thank you for reaching out. Our team will be in touch shortly.
+                </p>
+              </motion.div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="p-8 md:p-10 rounded-2xl space-y-6"
+                style={{
+                  background: "rgba(255,255,255,0.02)",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-[#8896AB] text-sm mb-2 font-medium" htmlFor="name">
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      placeholder="Jane Smith"
+                      required
+                      value={formState.name}
+                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                      className={inputClass}
+                      style={inputStyle}
+                      onFocus={(e) => (e.target.style.borderColor = "rgba(244,121,32,0.5)")}
+                      onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[#8896AB] text-sm mb-2 font-medium" htmlFor="email">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="jane@company.com"
+                      required
+                      value={formState.email}
+                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                      className={inputClass}
+                      style={inputStyle}
+                      onFocus={(e) => (e.target.style.borderColor = "rgba(244,121,32,0.5)")}
+                      onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[#8896AB] text-sm mb-2 font-medium" htmlFor="organization">
+                      Organization
+                    </label>
+                    <input
+                      id="organization"
+                      type="text"
+                      placeholder="Acme Corporation"
+                      required
+                      value={formState.organization}
+                      onChange={(e) => setFormState({ ...formState, organization: e.target.value })}
+                      className={inputClass}
+                      style={inputStyle}
+                      onFocus={(e) => (e.target.style.borderColor = "rgba(244,121,32,0.5)")}
+                      onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[#8896AB] text-sm mb-2 font-medium" htmlFor="role">
+                      Role
+                    </label>
+                    <input
+                      id="role"
+                      type="text"
+                      placeholder="CISO, CTO, etc."
+                      value={formState.role}
+                      onChange={(e) => setFormState({ ...formState, role: e.target.value })}
+                      className={inputClass}
+                      style={inputStyle}
+                      onFocus={(e) => (e.target.style.borderColor = "rgba(244,121,32,0.5)")}
+                      onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
+                    />
+                  </div>
+                </div>
+
+                {/* Area of Interest — exactly as on cyberaiq.com */}
+                <div>
+                  <label className="block text-[#8896AB] text-sm mb-3 font-medium">
+                    Area of Interest
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {areaOptions.map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        onClick={() => setFormState({ ...formState, area: opt })}
+                        className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200"
+                        style={{
+                          background:
+                            formState.area === opt
+                              ? "#F47920"
+                              : "rgba(255,255,255,0.04)",
+                          color: formState.area === opt ? "white" : "#8896AB",
+                          border: `1px solid ${
+                            formState.area === opt
+                              ? "#F47920"
+                              : "rgba(255,255,255,0.08)"
+                          }`,
+                        }}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label className="block text-[#8896AB] text-sm mb-2 font-medium" htmlFor="message">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={5}
+                    placeholder="Tell us about your security challenges and what you&apos;re looking to achieve..."
+                    required
+                    value={formState.message}
+                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                    className={`${inputClass} resize-none`}
+                    style={inputStyle}
+                    onFocus={(e) => (e.target.style.borderColor = "rgba(244,121,32,0.5)")}
+                    onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
+                  />
+                </div>
+
+                {/* Submit — real CTA from cyberaiq.com */}
+                <button
+                  type="submit"
+                  className="w-full py-4 rounded-xl bg-[#F47920] text-white font-semibold text-base hover:bg-[#e06810] transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-orange-500/20"
+                >
+                  Let&apos;s Build the Future of Trust!
+                </button>
+              </form>
+            )}
+          </motion.div>
+
+          {/* Contact info — real details from cyberaiq.com */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="lg:col-span-2 space-y-5"
+          >
+            {[
+              {
+                label: "Email",
+                value: "contact@cyberaiq.com",
+                href: "mailto:contact@cyberaiq.com",
+                icon: (
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <rect x="2" y="4" width="16" height="12" rx="2" stroke="#F47920" strokeWidth="1.3" />
+                    <path d="M2 7l8 5 8-5" stroke="#F47920" strokeWidth="1.3" strokeLinecap="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: "Phone",
+                value: "+971 4 837 8349",
+                href: "tel:+97148378349",
+                icon: (
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 2h4l2 5-2.5 1.5A11 11 0 0011.5 12.5L13 10l5 2v4c0 1-1 2-2 2C7 18 2 11 2 4c0-1 1-2 2-2z" stroke="#F47920" strokeWidth="1.3" strokeLinejoin="round"/>
+                  </svg>
+                ),
+              },
+            ].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="flex items-start gap-4 p-5 rounded-2xl group transition-all duration-200"
+                style={{
+                  background: "rgba(255,255,255,0.02)",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                }}
+                onMouseEnter={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(244,121,32,0.25)")
+                }
+                onMouseLeave={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.06)")
+                }
+              >
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: "rgba(244,121,32,0.1)" }}
+                >
+                  {item.icon}
+                </div>
+                <div>
+                  <p className="text-[#8896AB] text-xs font-medium mb-1">{item.label}</p>
+                  <p className="text-[#F0F4F8] font-semibold group-hover:text-[#F47920] transition-colors duration-200">
+                    {item.value}
+                  </p>
+                </div>
+              </a>
+            ))}
+
+            {/* Why talk to us */}
+            <div
+              className="p-6 rounded-2xl"
+              style={{
+                background: "rgba(43,126,193,0.04)",
+                border: "1px solid rgba(43,126,193,0.15)",
+              }}
+            >
+              <h3 className="text-[#F0F4F8] font-semibold mb-5 text-sm">Why talk to us?</h3>
+              {[
+                "Architecture-first, outcomes-driven approach",
+                "No hardware. No legacy models.",
+                "Hyperscaler-aligned by default",
+                "NDA available upon request",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 mb-3 last:mb-0">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#2B7EC1] flex-shrink-0" />
+                  <span className="text-[#8896AB] text-sm">{item}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <Footer />
+    </motion.main>
+  );
+}
