@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AnimatePresence } from "framer-motion";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 
@@ -40,6 +41,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
 
   return (
     <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
+      <AnnouncementBar />
       <Navbar />
       <AnimatePresence mode="wait">{children}</AnimatePresence>
       <CustomCursor />
@@ -54,11 +56,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        <title>CyberAIQ AG — AI, Cloud, Cyber &amp; Quantum Security</title>
-        <meta name="description" content="CyberAIQ AG converges AI, Cloud, Cyber and Quantum security for the modern enterprise." />
+        <title>CyberAIQ AG — AI, Cloud, Cyber &amp; Quantum Convergence</title>
+        <meta name="description" content="CyberAIQ AG converges AI, Cloud, Cyber and Quantum into a single strategic advantage for the modern enterprise." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="min-h-full bg-[#0A0D12]" suppressHydrationWarning>
+      <body className="min-h-full" suppressHydrationWarning>
         <RootLayoutInner>{children}</RootLayoutInner>
       </body>
     </html>

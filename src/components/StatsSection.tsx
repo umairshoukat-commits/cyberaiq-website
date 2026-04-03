@@ -3,7 +3,6 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 
-// Labels from cyberaiq.com — values are placeholder targets
 const stats = [
   { value: 12, suffix: "+", label: "Years of Service Excellence" },
   { value: 300, suffix: "+", label: "Secure Digital Solutions Delivered" },
@@ -34,7 +33,6 @@ function AnimatedCounter({
     function tick(now: number) {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      // easeOutQuart
       const eased = 1 - Math.pow(1 - progress, 4);
       const current = eased * target;
 
@@ -59,92 +57,81 @@ function AnimatedCounter({
   return (
     <span className="tabular-nums">
       {display}
-      <span className="text-3xl lg:text-4xl font-black text-[#F47920] ml-0.5">
+      <span className="text-2xl lg:text-3xl font-black text-[#F47920] ml-0.5">
         {suffix}
       </span>
     </span>
   );
 }
 
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
+  },
+};
+
 export default function StatsSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const inView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   return (
     <section
       ref={sectionRef}
-      className="py-32 px-6 relative overflow-hidden border-t"
-      style={{ borderColor: "rgba(255,255,255,0.06)" }}
+      className="relative overflow-hidden"
+      style={{ padding: "160px 0", background: "rgba(255,255,255,0.008)" }}
     >
-      {/* Background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 100% 60% at 50% 50%, rgba(43,126,193,0.06) 0%, rgba(244,121,32,0.04) 50%, transparent 80%)",
-        }}
-      />
-      {/* Grid lines */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.02]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(240,244,248,1) 1px, transparent 1px), linear-gradient(90deg, rgba(240,244,248,1) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
+      <div className="max-w-[1280px] mx-auto px-6 md:px-20 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="text-center mb-16"
         >
-          <span className="text-xs font-semibold tracking-[0.3em] uppercase text-[#2B7EC1] mb-4 block">
+          <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-[#2B7EC1] mb-4">
             By The Numbers
-          </span>
-          <h2 className="text-3xl md:text-4xl font-black text-[#F0F4F8] tracking-[-0.02em]">
+          </p>
+          <h2 style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }} className="text-[#F0F4F8]">
             Proven at scale
           </h2>
         </motion.div>
 
-        {/* Stats grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, scale: 0.8, y: 24 }}
+              initial={{ opacity: 0, scale: 0.9, y: 24 }}
               animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
               transition={{
                 duration: 0.6,
                 delay: i * 0.12,
-                ease: [0.16, 1, 0.3, 1],
+                ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
               }}
               className="text-center"
             >
-              <div className="text-5xl lg:text-6xl font-black text-[#F0F4F8] mb-3">
+              <div className="text-4xl lg:text-5xl font-black text-[#F0F4F8] mb-3">
                 <AnimatedCounter
                   target={stat.value}
                   suffix={stat.suffix}
                   inView={inView}
                 />
               </div>
-              <p className="text-[#8896AB] text-sm font-medium tracking-wide uppercase leading-snug px-2">
+              <p className="text-[#8896AB] text-xs font-medium tracking-wider uppercase leading-snug px-2">
                 {stat.label}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Divider */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="mt-20 pt-8 text-center"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
+          className="mt-16 pt-8 text-center"
+          style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
         >
           <p className="text-[#8896AB] text-sm">
             Trusted by enterprises across Europe, the Middle East, and North America

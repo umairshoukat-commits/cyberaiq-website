@@ -15,16 +15,17 @@ const links = {
     { href: "/services#ai", label: "AI Enablement" },
     { href: "/services#cloud", label: "Cloud Transformation" },
     { href: "/services#quantum", label: "Quantum Readiness" },
+    { href: "/ai-resilience", label: "AI Resilience" },
   ],
 };
 
 export default function Footer() {
   return (
     <footer
-      className="border-t pt-16 pb-8 px-6"
-      style={{ background: "#060810", borderColor: "rgba(255,255,255,0.08)" }}
+      className="border-t pt-16 pb-8 px-6 md:px-20"
+      style={{ background: "#060810", borderColor: "rgba(255,255,255,0.06)" }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1280px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">

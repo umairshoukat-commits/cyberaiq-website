@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
-// Role categories from cyberaiq.com — no invented job listings
 const roleCategories = [
   {
     title: "Cloud & Hyperscaler Architects",
@@ -33,13 +32,35 @@ const roleCategories = [
   },
 ];
 
-// Culture pillars from cyberaiq.com
 const culture = [
   { label: "Hyperscaler-aligned by default", color: "#F47920" },
   { label: "Strategy-led, execution-focused", color: "#2B7EC1" },
   { label: "Automation-first, not headcount-driven", color: "#F47920" },
   { label: "Ethical, responsible, and transparent", color: "#2B7EC1" },
 ];
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
+  },
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
+  },
+};
 
 export default function CareersPage() {
   return (
@@ -50,37 +71,31 @@ export default function CareersPage() {
       transition={{ duration: 0.4 }}
     >
       {/* Hero */}
-      <section className="pt-32 pb-24 px-6 relative overflow-hidden">
+      <section className="relative overflow-hidden" style={{ paddingTop: "180px", paddingBottom: "100px" }}>
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(244,121,32,0.08) 0%, transparent 70%)",
+              "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(244,121,32,0.06) 0%, transparent 70%)",
           }}
         />
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="max-w-[1280px] mx-auto px-6 md:px-20 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            variants={sectionVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <span className="text-xs font-semibold tracking-[0.3em] uppercase text-[#F47920] mb-6 block">
+            <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-[#F47920] mb-6">
               Careers
-            </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#F0F4F8] leading-tight tracking-[-0.02em] mb-6">
+            </p>
+            <h1
+              className="text-[#F0F4F8] mb-6"
+              style={{ fontSize: "clamp(40px, 5vw, 72px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.05 }}
+            >
               Build the future of{" "}
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #F47920, #2B7EC1)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                trust
-              </span>
+              <span className="gradient-text">trust</span>
             </h1>
-            <p className="text-[#8896AB] text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[#8896AB] max-w-2xl mx-auto leading-relaxed" style={{ fontSize: "18px" }}>
               We are not a traditional services firm. We are building the foundations of trust
               for the AI, cloud, and quantum era.
             </p>
@@ -89,40 +104,43 @@ export default function CareersPage() {
       </section>
 
       {/* Who We Hire */}
-      <section className="py-32 px-6 border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-        <div className="max-w-7xl mx-auto">
+      <section className="relative" style={{ padding: "160px 0", background: "rgba(255,255,255,0.008)" }}>
+        <div className="max-w-[1280px] mx-auto px-6 md:px-20">
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
             className="mb-14 max-w-2xl"
           >
-            <span className="text-xs font-semibold tracking-[0.3em] uppercase text-[#2B7EC1] mb-4 block">
+            <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-[#2B7EC1] mb-4">
               Who We Look For
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-[#F0F4F8] tracking-[-0.02em] mb-6">
+            </p>
+            <h2 className="text-[#F0F4F8] mb-6" style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
               Builders, architects, and thinkers
             </h2>
-            <p className="text-[#8896AB] text-lg leading-relaxed">
+            <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "18px" }}>
               We seek people who think systemically across Cloud, AI, Cyber, and Data — and who
               care about ethics, governance, and real-world impact.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {[
               "Think systemically across Cloud, AI, Cyber, and Data",
               "Care about ethics, governance, and real-world impact",
               "Prefer solving hard problems over maintaining legacy models",
               "Want to shape platforms and outcomes — not just deliver projects",
-            ].map((trait, i) => (
+            ].map((trait) => (
               <motion.div
                 key={trait}
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                variants={cardVariants}
                 className="flex items-start gap-4 p-5 rounded-xl"
                 style={{
                   background: "rgba(255,255,255,0.02)",
@@ -133,37 +151,37 @@ export default function CareersPage() {
                 <p className="text-[#8896AB] text-sm leading-relaxed">{trait}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Open Role Categories */}
-      <section className="py-32 px-6 border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-        <div className="max-w-7xl mx-auto">
+      <section className="relative" style={{ padding: "160px 0" }}>
+        <div className="max-w-[1280px] mx-auto px-6 md:px-20">
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
             className="mb-12"
           >
-            <span className="text-xs font-semibold tracking-[0.3em] uppercase text-[#F47920] mb-4 block">
+            <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-[#F47920] mb-4">
               Work Areas
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-[#F0F4F8] tracking-[-0.02em]">
+            </p>
+            <h2 className="text-[#F0F4F8]" style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
               Where you&apos;ll work
             </h2>
           </motion.div>
 
-          <div className="space-y-4">
-            {roleCategories.map((role, i) => (
-              <motion.div
-                key={role.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: i * 0.09 }}
-              >
+          <motion.div
+            className="space-y-4"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {roleCategories.map((role) => (
+              <motion.div key={role.title} variants={cardVariants}>
                 <Link
                   href={`mailto:careers@cyberaiq.com?subject=${encodeURIComponent(role.title)}`}
                   className="flex flex-col md:flex-row md:items-center justify-between p-6 rounded-2xl group transition-all duration-300"
@@ -172,9 +190,7 @@ export default function CareersPage() {
                     border: "1px solid rgba(255,255,255,0.06)",
                   }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = role.color === "#F47920"
-                      ? "rgba(244,121,32,0.3)"
-                      : "rgba(43,126,193,0.3)";
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor = `${role.color}40`;
                     (e.currentTarget as HTMLAnchorElement).style.background = `${role.color}06`;
                   }}
                   onMouseLeave={(e) => {
@@ -185,7 +201,7 @@ export default function CareersPage() {
                   <div>
                     <div className="flex items-center gap-3 mb-2">
                       <div className="w-2 h-2 rounded-full" style={{ background: role.color }} />
-                      <span className="text-[#8896AB] text-xs font-medium tracking-wide uppercase">
+                      <span className="text-[#8896AB] text-[10px] font-medium tracking-wider uppercase">
                         Open Category
                       </span>
                     </div>
@@ -197,7 +213,7 @@ export default function CareersPage() {
                   <div className="flex items-center gap-3 mt-4 md:mt-0 flex-shrink-0">
                     <span
                       className="px-3 py-1 rounded-full text-xs font-semibold"
-                      style={{ background: `${role.color}15`, color: role.color }}
+                      style={{ background: `${role.color}12`, color: role.color }}
                     >
                       Enquire
                     </span>
@@ -215,40 +231,43 @@ export default function CareersPage() {
                 </Link>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Culture */}
-      <section className="py-32 px-6 border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-        <div className="max-w-7xl mx-auto">
+      <section className="relative" style={{ padding: "160px 0", background: "rgba(255,255,255,0.008)" }}>
+        <div className="max-w-[1280px] mx-auto px-6 md:px-20">
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
             className="mb-12"
           >
-            <span className="text-xs font-semibold tracking-[0.3em] uppercase text-[#2B7EC1] mb-4 block">
+            <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-[#2B7EC1] mb-4">
               How We Work
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-[#F0F4F8] tracking-[-0.02em]">
+            </p>
+            <h2 className="text-[#F0F4F8]" style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
               Our culture
             </h2>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {culture.map((item, i) => (
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {culture.map((item) => (
               <motion.div
                 key={item.label}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                variants={cardVariants}
                 className="flex items-center gap-4 p-6 rounded-2xl"
                 style={{
                   background: "rgba(255,255,255,0.02)",
                   border: "1px solid rgba(255,255,255,0.06)",
-                  boxShadow: `inset 0 2px 0 0 ${item.color}25`,
+                  boxShadow: `inset 0 2px 0 0 ${item.color}20`,
                 }}
               >
                 <div
@@ -258,29 +277,30 @@ export default function CareersPage() {
                 <p className="text-[#F0F4F8] font-medium">{item.label}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-32 px-6 text-center border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+      <section className="relative text-center" style={{ padding: "160px 0" }}>
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-2xl mx-auto"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="max-w-2xl mx-auto px-6"
         >
-          <h2 className="text-3xl md:text-4xl font-black text-[#F0F4F8] tracking-[-0.02em] mb-4">
+          <h2 className="text-[#F0F4F8] mb-4" style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
             Don&apos;t see your role?
           </h2>
-          <p className="text-[#8896AB] mb-8 text-lg leading-relaxed">
+          <p className="text-[#8896AB] mb-8" style={{ fontSize: "18px" }}>
             We&apos;re always looking for exceptional talent. Send us your profile and we&apos;ll
             reach out when something fits.
           </p>
           <a
             href="mailto:careers@cyberaiq.com"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#F47920] text-white font-semibold hover:bg-[#e06810] transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-orange-500/20"
+            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-[#F47920] text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:bg-[#e06810]"
+            style={{ fontSize: "16px" }}
           >
             careers@cyberaiq.com
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

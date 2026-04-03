@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -18,9 +17,9 @@ const services = [
       "Governance, risk, and compliance by design",
     ],
     icon: (
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-        <path d="M16 3L4 8v8c0 7.2 5.2 13.9 12 15.4C23 29.9 28 23.2 28 16V8L16 3z" stroke="#F47920" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M11 16l3.5 3.5L21 12" stroke="#F47920" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L3 6v6c0 5.4 3.9 10.4 9 11.5 5.1-1.1 9-6.1 9-11.5V6L12 2z" stroke="#F47920" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M9 12l2 2 4-4" stroke="#F47920" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     accent: "#F47920",
@@ -39,11 +38,10 @@ const services = [
       "Security workflow automation & Data readiness for AI",
     ],
     icon: (
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="16" r="4" stroke="#2B7EC1" strokeWidth="1.5" />
-        <path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="#2B7EC1" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M7.5 7.5l2.8 2.8M21.7 21.7l2.8 2.8M7.5 24.5l2.8-2.8M21.7 10.3l2.8-2.8" stroke="#2B7EC1" strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="16" cy="16" r="9" stroke="#2B7EC1" strokeWidth="1" strokeDasharray="2 3" opacity="0.4" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="3" stroke="#2B7EC1" strokeWidth="1.5" />
+        <path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="#2B7EC1" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="12" cy="12" r="8" stroke="#2B7EC1" strokeWidth="1" strokeDasharray="2 2" opacity="0.4" />
       </svg>
     ),
     accent: "#2B7EC1",
@@ -62,10 +60,10 @@ const services = [
       "Landing zone, architecture design & workload migration",
     ],
     icon: (
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-        <path d="M24 20a5 5 0 10-1-9.9A8 8 0 108 20" stroke="#F47920" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M12 24l4-4 4 4" stroke="#F47920" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M16 20v8" stroke="#F47920" strokeWidth="1.5" strokeLinecap="round" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M18 16a4 4 0 10-.8-7.9A6 6 0 106 16" stroke="#F47920" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M9 19l3-3 3 3" stroke="#F47920" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M12 16v6" stroke="#F47920" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
     accent: "#F47920",
@@ -84,11 +82,11 @@ const services = [
       "Post-Quantum Readiness strategies for critical infrastructure",
     ],
     icon: (
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="16" r="12" stroke="#2B7EC1" strokeWidth="1.5" />
-        <ellipse cx="16" cy="16" rx="12" ry="5" stroke="#2B7EC1" strokeWidth="1.5" transform="rotate(60 16 16)" />
-        <ellipse cx="16" cy="16" rx="12" ry="5" stroke="#2B7EC1" strokeWidth="1.5" transform="rotate(-60 16 16)" />
-        <circle cx="16" cy="16" r="2" fill="#2B7EC1" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9" stroke="#2B7EC1" strokeWidth="1.5" />
+        <ellipse cx="12" cy="12" rx="9" ry="4" stroke="#2B7EC1" strokeWidth="1" transform="rotate(60 12 12)" opacity="0.5" />
+        <ellipse cx="12" cy="12" rx="9" ry="4" stroke="#2B7EC1" strokeWidth="1" transform="rotate(-60 12 12)" opacity="0.5" />
+        <circle cx="12" cy="12" r="2" fill="#2B7EC1" />
       </svg>
     ),
     accent: "#2B7EC1",
@@ -96,143 +94,114 @@ const services = [
   },
 ];
 
-const cardVariants = {
+const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
+  visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] },
-  }),
+    transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
+  },
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
+  },
 };
 
 export default function ServicesSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
-
   return (
-    <section ref={sectionRef} className="py-32 px-6 relative border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }} id="services">
-      {/* Subtle background accent */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 60% 40% at 80% 50%, rgba(43,126,193,0.05) 0%, transparent 70%)",
-        }}
-      />
-
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
+    <section className="relative" style={{ padding: "160px 0" }} id="services">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-20">
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="mb-16 max-w-2xl"
         >
-          <span className="text-xs font-semibold tracking-[0.3em] uppercase text-[#F47920] mb-4 block">
+          <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-[#F47920] mb-4">
             Our Services
-          </span>
-          <h2 className="text-3xl md:text-4xl font-black text-[#F0F4F8] leading-tight tracking-[-0.02em] mb-4">
-            Four pillars of{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #F47920, #2B7EC1)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              security convergence
-            </span>
+          </p>
+          <h2 style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }} className="text-[#F0F4F8] mb-5">
+            Four pillars of convergence
           </h2>
-          <p className="text-[#8896AB] text-lg leading-relaxed">
+          <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "18px" }}>
             A unified approach to securing your enterprise across every dimension of the modern threat landscape.
           </p>
         </motion.div>
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.id}
-              custom={i}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-              variants={cardVariants}
-              viewport={{ once: true, margin: "-100px" }}
-            >
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {services.map((service) => (
+            <motion.div key={service.id} variants={cardVariants}>
               <Link href={service.href} className="block h-full group">
                 <div
-                  className="h-full p-8 min-h-[300px] rounded-2xl relative overflow-hidden transition-all duration-300"
+                  className="h-full p-8 rounded-2xl relative overflow-hidden transition-all duration-300"
                   style={{
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "rgba(255,255,255,0.02)",
+                    border: "1px solid rgba(255,255,255,0.06)",
                     backdropFilter: "blur(10px)",
-                    WebkitBackdropFilter: "blur(10px)",
-                    // Top accent line via box-shadow inset
-                    boxShadow: `inset 0 2px 0 0 ${service.accent}40`,
+                    boxShadow: `inset 0 2px 0 0 ${service.accent}30`,
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget;
-                    el.style.borderColor = service.accent === "#F47920"
-                      ? "rgba(244,121,32,0.4)"
-                      : "rgba(43,126,193,0.4)";
-                    el.style.boxShadow = `inset 0 2px 0 0 ${service.accent}80, 0 0 30px ${service.accent}18`;
+                    el.style.borderColor = `${service.accent}40`;
+                    el.style.boxShadow = `inset 0 2px 0 0 ${service.accent}60, 0 0 30px ${service.accent}10`;
                     el.style.transform = "translateY(-4px)";
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget;
-                    el.style.borderColor = "rgba(255,255,255,0.08)";
-                    el.style.boxShadow = `inset 0 2px 0 0 ${service.accent}40`;
+                    el.style.borderColor = "rgba(255,255,255,0.06)";
+                    el.style.boxShadow = `inset 0 2px 0 0 ${service.accent}30`;
                     el.style.transform = "translateY(0)";
                   }}
                 >
-                  {/* Hover background glow */}
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                    style={{
-                      background: `radial-gradient(ellipse 70% 50% at 20% 20%, ${service.accent}0d, transparent 60%)`,
-                    }}
-                  />
-
                   <div className="relative z-10">
-                    {/* Icon */}
                     <div
-                      className="w-14 h-14 rounded-xl flex items-center justify-center mb-6"
+                      className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
                       style={{
-                        background: `${service.accent}12`,
-                        border: `1px solid ${service.accent}30`,
+                        background: `${service.accent}10`,
+                        border: `1px solid ${service.accent}25`,
                       }}
                     >
                       {service.icon}
                     </div>
 
-                    <h3 className="text-xl font-bold text-[#F0F4F8] mb-3 tracking-tight group-hover:text-white transition-colors">
+                    <h3 className="text-xl font-semibold text-[#F0F4F8] mb-3 tracking-tight group-hover:text-white transition-colors">
                       {service.title}
                     </h3>
                     <p className="text-[#8896AB] leading-relaxed text-sm mb-5">
                       {service.description}
                     </p>
 
-                    {/* Focus areas */}
                     <ul className="space-y-2 mb-6">
                       {service.focusAreas.map((area) => (
                         <li key={area} className="flex items-start gap-2">
                           <div className="w-1 h-1 rounded-full mt-2 flex-shrink-0" style={{ background: service.accent }} />
-                          <span className="text-[#8896AB]/80 text-xs leading-relaxed">{area}</span>
+                          <span className="text-[#8896AB]/70 text-xs leading-relaxed">{area}</span>
                         </li>
                       ))}
                     </ul>
 
-                    {/* Tagline */}
-                    <p className="text-xs italic mb-5 leading-relaxed" style={{ color: `${service.accent}cc` }}>
-                      &ldquo;{service.tagline}&rdquo;
-                    </p>
-
-                    {/* Arrow CTA */}
                     <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: service.accent }}>
                       <span>Learn more</span>
                       <svg
-                        width="16"
-                        height="16"
+                        width="14"
+                        height="14"
                         viewBox="0 0 16 16"
                         fill="none"
                         className="transition-transform duration-200 group-hover:translate-x-1"
@@ -245,7 +214,7 @@ export default function ServicesSection() {
               </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

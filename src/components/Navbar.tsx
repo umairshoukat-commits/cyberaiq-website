@@ -39,20 +39,21 @@ export default function Navbar() {
     <>
       <nav
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
-        style={
-          scrolled
+        className="fixed left-0 right-0 z-50 transition-all duration-500"
+        style={{
+          top: "36px", /* below announcement bar */
+          ...(scrolled
             ? {
-                background: "rgba(10,13,18,0.92)",
+                background: "rgba(8,11,16,0.92)",
                 backdropFilter: "blur(20px)",
                 WebkitBackdropFilter: "blur(20px)",
-                borderBottom: "1px solid rgba(255,255,255,0.08)",
+                borderBottom: "1px solid rgba(255,255,255,0.06)",
               }
-            : { background: "transparent" }
-        }
+            : { background: "transparent" }),
+        }}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-20">
-          {/* Logo — transparent background, no wrapper bg */}
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex items-center justify-between" style={{ height: "72px" }}>
+          {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
             <Image
               src="/logo.png"
@@ -60,7 +61,8 @@ export default function Navbar() {
               width={160}
               height={25}
               priority
-              className="h-8 w-auto"
+              className="w-auto"
+              style={{ height: "32px" }}
               unoptimized
             />
           </Link>
@@ -73,19 +75,17 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm tracking-wide transition-colors duration-200 relative group ${
+                  className={`text-[13px] tracking-wide transition-colors duration-200 relative group ${
                     isActive
                       ? "text-white font-semibold"
                       : "text-[#8896AB] hover:text-white font-medium"
                   }`}
                 >
                   {link.label}
-                  {/* Active underline */}
                   <span
                     className="absolute -bottom-1 left-0 h-px bg-[#F47920] transition-all duration-300"
                     style={{ width: isActive ? "100%" : "0%" }}
                   />
-                  {/* Hover underline */}
                   {!isActive && (
                     <span className="absolute -bottom-1 left-0 h-px bg-white/30 w-0 group-hover:w-full transition-all duration-300" />
                   )}
@@ -98,7 +98,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <Link
               href="/contact"
-              className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-[#F47920] text-white text-sm font-semibold hover:bg-[#e06810] transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-orange-500/0 hover:shadow-orange-500/25"
+              className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-[#F47920] text-white text-[13px] font-semibold hover:bg-[#e06810] transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-orange-500/0 hover:shadow-orange-500/25"
             >
               Get Started
             </Link>
@@ -123,7 +123,7 @@ export default function Navbar() {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="md:hidden overflow-hidden"
-              style={{ background: "rgba(10,13,18,0.97)", backdropFilter: "blur(20px)" }}
+              style={{ background: "rgba(8,11,16,0.97)", backdropFilter: "blur(20px)" }}
             >
               <div className="flex flex-col px-6 py-6 gap-5 border-t border-white/5">
                 {navLinks.map((link, i) => (
