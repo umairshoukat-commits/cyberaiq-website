@@ -137,14 +137,10 @@ export default function HyperscalerTicker() {
         ))}
       </motion.div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes ticker {
-          from {
-            transform: translateX(0%);
-          }
-          to {
-            transform: translateX(-50%);
-          }
+          from { transform: translateX(0%); }
+          to { transform: translateX(-50%); }
         }
       `}</style>
     </section>
