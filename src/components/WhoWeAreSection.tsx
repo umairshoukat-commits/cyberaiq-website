@@ -25,11 +25,11 @@ export default function WhoWeAreSection() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
             >
-              <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-4">
+              <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-4">
                 Who We Are
               </p>
               <h2
-                className="text-text-0 mb-6"
+                className="text-[#F0F4F8] mb-6"
                 style={{
                   fontSize: "clamp(28px, 3.5vw, 48px)",
                   fontWeight: 800,
@@ -40,7 +40,7 @@ export default function WhoWeAreSection() {
               >
                 Founded by practitioners, not operators
               </h2>
-              <p className="text-text-2 leading-[1.7] mb-8" style={{ fontSize: "16px" }}>
+              <p className="text-[#8896AB] leading-[1.7] mb-8" style={{ fontSize: "16px" }}>
                 CYBERAIQ AG is founded by serial entrepreneurs and hyperscaler leaders who have:
               </p>
             </motion.div>
@@ -58,8 +58,8 @@ export default function WhoWeAreSection() {
                   variants={staggerItem}
                   className="flex items-start gap-4"
                 >
-                  <div className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0" />
-                  <p className="text-text-2 leading-[1.7]" style={{ fontSize: "16px" }}>
+                  <div className="w-2 h-2 rounded-full bg-[#F47920] mt-2 flex-shrink-0" />
+                  <p className="text-[#8896AB] leading-[1.7]" style={{ fontSize: "16px" }}>
                     {bullet}
                   </p>
                 </motion.div>
@@ -71,7 +71,7 @@ export default function WhoWeAreSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              className="text-text-1 leading-[1.7]"
+              className="text-[#C5CDD8] leading-[1.7]"
               style={{ fontSize: "16px" }}
             >
               We bring together deep cyber expertise, AI-first thinking, and hyperscaler-native execution to create secure, compliant, and measurable outcomes at scale.
@@ -86,7 +86,7 @@ export default function WhoWeAreSection() {
             viewport={{ once: true, amount: 0.2 }}
           >
             <div
-              className="p-10 rounded-2xl bg-surface-1 border border-[var(--color-border)] relative overflow-hidden"
+              className="p-10 rounded-2xl bg-[#0A0D12] border border-[var(--color-border)] relative overflow-hidden"
               style={{ minHeight: "380px" }}
             >
               <div className="absolute inset-0 pointer-events-none">
@@ -100,7 +100,7 @@ export default function WhoWeAreSection() {
                 />
               </div>
               <div className="relative z-10 flex flex-col justify-center h-full" style={{ minHeight: "300px" }}>
-                <p className="text-text-1/60 text-sm italic leading-relaxed border-l-2 border-accent/40 pl-4 mb-8">
+                <p className="text-[#C5CDD8]/60 text-sm italic leading-relaxed border-l-2 border-accent/40 pl-4 mb-8">
                   &ldquo;Security is no longer a function. It is a cloud, data, automation and intelligence problem.&rdquo;
                 </p>
                 <div className="grid grid-cols-2 gap-4">
@@ -111,8 +111,8 @@ export default function WhoWeAreSection() {
                     { value: "3", label: "Hyperscaler Partners" },
                   ].map((stat) => (
                     <div key={stat.label} className="text-center p-4">
-                      <p className="text-2xl font-black text-text-0 mb-1">{stat.value}</p>
-                      <p className="text-text-3 text-xs uppercase tracking-wider">{stat.label}</p>
+                      <p className="text-2xl font-black text-[#F0F4F8] mb-1">{stat.value}</p>
+                      <p className="text-[#5A6678] text-xs uppercase tracking-wider">{stat.label}</p>
                     </div>
                   ))}
                 </div>

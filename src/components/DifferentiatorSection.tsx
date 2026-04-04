@@ -26,11 +26,11 @@ export default function DifferentiatorSection() {
           viewport={{ once: true, amount: 0.2 }}
           className="mb-16"
         >
-          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
+          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-4">
             What Makes Us Different
           </p>
           <h2
-            className="text-text-0"
+            className="text-[#F0F4F8]"
             style={{
               fontSize: "clamp(28px, 3.5vw, 48px)",
               fontWeight: 800,
@@ -52,7 +52,7 @@ export default function DifferentiatorSection() {
             viewport={{ once: true, amount: 0.2 }}
           >
             <div
-              className="p-10 rounded-2xl bg-surface-1 border border-[var(--color-border)] relative overflow-hidden"
+              className="p-10 rounded-2xl bg-[#0A0D12] border border-[var(--color-border)] relative overflow-hidden"
               style={{ minHeight: "380px" }}
             >
               {/* Subtle glows */}
@@ -67,17 +67,17 @@ export default function DifferentiatorSection() {
                 />
               </div>
               <div className="relative z-10 flex flex-col justify-center h-full" style={{ minHeight: "300px" }}>
-                <p className="text-text-0 text-xl font-semibold mb-6 leading-snug">
+                <p className="text-[#F0F4F8] text-xl font-semibold mb-6 leading-snug">
                   We don&apos;t operate security — we enable secure transformation.
                 </p>
-                <p className="text-text-2 leading-[1.7] mb-8" style={{ fontSize: "16px" }}>
+                <p className="text-[#8896AB] leading-[1.7] mb-8" style={{ fontSize: "16px" }}>
                   By architecting resilience, trust, and long-term adaptability across AI, Cloud, Cyber, and Quantum.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   {["AI", "Cloud", "Cyber", "Quantum"].map((pillar, i) => (
                     <div
                       key={pillar}
-                      className="p-4 rounded-xl bg-surface-2 border border-[var(--color-border)] text-center"
+                      className="p-4 rounded-xl bg-[#0E1117] border border-[var(--color-border)] text-center"
                     >
                       <span
                         className="text-xs font-semibold tracking-[0.15em] uppercase"
@@ -104,7 +104,7 @@ export default function DifferentiatorSection() {
               <motion.div
                 key={item}
                 variants={staggerItem}
-                className="flex items-start gap-4 p-5 rounded-xl bg-surface-1 border border-[var(--color-border)] transition-all duration-300"
+                className="flex items-start gap-4 p-5 rounded-xl bg-[#0A0D12] border border-[var(--color-border)] transition-all duration-300"
               >
                 <div
                   className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
@@ -123,7 +123,7 @@ export default function DifferentiatorSection() {
                     />
                   </svg>
                 </div>
-                <p className="text-text-0 font-medium" style={{ fontSize: "16px" }}>
+                <p className="text-[#F0F4F8] font-medium" style={{ fontSize: "16px" }}>
                   {item}
                 </p>
               </motion.div>

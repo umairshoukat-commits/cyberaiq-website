@@ -73,13 +73,13 @@ export default function Navbar() {
                 href={link.href}
                 className={`text-[13px] tracking-wide transition-colors duration-200 relative group ${
                   isActive
-                    ? "text-text-0 font-semibold"
-                    : "text-text-2 hover:text-text-0 font-medium"
+                    ? "text-[#F0F4F8] font-semibold"
+                    : "text-[#8896AB] hover:text-[#F0F4F8] font-medium"
                 }`}
               >
                 {link.label}
                 <span
-                  className="absolute -bottom-1 left-0 h-px bg-accent transition-all duration-300"
+                  className="absolute -bottom-1 left-0 h-px bg-[#F47920] transition-all duration-300"
                   style={{ width: isActive ? "100%" : "0%" }}
                 />
                 {!isActive && (
@@ -94,7 +94,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <Link
             href="/contact"
-            className="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-accent text-white text-[13px] font-semibold hover:bg-accent-dim transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-orange-500/0 hover:shadow-orange-500/25"
+            className="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-[#F47920] text-white text-[13px] font-semibold hover:bg-[#c96218] transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-orange-500/0 hover:shadow-orange-500/25"
           >
             Get Started
           </Link>
@@ -104,17 +104,17 @@ export default function Navbar() {
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-6 h-0.5 bg-text-0 transition-all duration-300 ${
+              className={`block w-6 h-0.5 bg-[#F0F4F8] transition-all duration-300 ${
                 menuOpen ? "rotate-45 translate-y-2" : ""
               }`}
             />
             <span
-              className={`block w-6 h-0.5 bg-text-0 transition-all duration-300 ${
+              className={`block w-6 h-0.5 bg-[#F0F4F8] transition-all duration-300 ${
                 menuOpen ? "opacity-0" : ""
               }`}
             />
             <span
-              className={`block w-6 h-0.5 bg-text-0 transition-all duration-300 ${
+              className={`block w-6 h-0.5 bg-[#F0F4F8] transition-all duration-300 ${
                 menuOpen ? "-rotate-45 -translate-y-2" : ""
               }`}
             />
@@ -136,7 +136,7 @@ export default function Navbar() {
               backdropFilter: "blur(20px)",
             }}
           >
-            <div className="flex flex-col px-6 py-6 gap-5 border-t border-border">
+            <div className="flex flex-col px-6 py-6 gap-5 border-t border-[rgba(255,255,255,0.06)]">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -147,7 +147,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     className={`text-base font-medium ${
-                      pathname === link.href ? "text-text-0" : "text-text-2"
+                      pathname === link.href ? "text-[#F0F4F8]" : "text-[#8896AB]"
                     }`}
                   >
                     {link.label}
@@ -156,7 +156,7 @@ export default function Navbar() {
               ))}
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-accent text-white text-sm font-semibold mt-2"
+                className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#F47920] text-white text-sm font-semibold mt-2"
               >
                 Get Started
               </Link>

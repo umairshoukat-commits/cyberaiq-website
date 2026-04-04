@@ -95,12 +95,12 @@ export default function CareersPage() {
         />
         <div className="max-w-[1280px] mx-auto px-6 md:px-20">
           <div className="max-w-3xl">
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-6">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-6">
               Careers
             </p>
             <h1
               ref={h1Ref}
-              className="text-text-0 mb-6"
+              className="text-[#F0F4F8] mb-6"
               style={{
                 fontSize: "clamp(36px, 4.5vw, 64px)",
                 fontWeight: 900,
@@ -114,7 +114,7 @@ export default function CareersPage() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-text-2 leading-relaxed max-w-2xl"
+              className="text-[#8896AB] leading-relaxed max-w-2xl"
               style={{ fontSize: "16px", lineHeight: 1.7 }}
             >
               CYBERAIQ AG is not a traditional services firm. We are building the foundations of
@@ -138,11 +138,11 @@ export default function CareersPage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-14 max-w-2xl"
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-4">
               Who We Look For
             </p>
             <h2
-              className="text-text-0 mb-6"
+              className="text-[#F0F4F8] mb-6"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -153,7 +153,7 @@ export default function CareersPage() {
               Builders, architects, and thinkers
             </h2>
             <p
-              className="text-text-2 leading-relaxed"
+              className="text-[#8896AB] leading-relaxed"
               style={{ fontSize: "16px", lineHeight: 1.7 }}
             >
               We are looking for builders, architects, and thinkers who:
@@ -177,8 +177,8 @@ export default function CareersPage() {
                   border: "1px solid rgba(255,255,255,0.06)",
                 }}
               >
-                <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0 bg-accent" />
-                <p className="text-text-2 text-sm leading-relaxed">{trait}</p>
+                <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0 bg-[#F47920]" />
+                <p className="text-[#8896AB] text-sm leading-relaxed">{trait}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -195,11 +195,11 @@ export default function CareersPage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-14"
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-4">
               What You&apos;ll Work On
             </p>
             <h2
-              className="text-text-0"
+              className="text-[#F0F4F8]"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -245,7 +245,7 @@ export default function CareersPage() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <p className="text-text-2 leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+                <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
                   {area}
                 </p>
               </motion.div>
@@ -257,7 +257,7 @@ export default function CareersPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            className="text-text-2 italic text-sm border-l-2 pl-4"
+            className="text-[#8896AB] italic text-sm border-l-2 pl-4"
             style={{ borderColor: "rgba(244,121,32,0.4)" }}
           >
             All work is cloud-first, AI-aware, and compliance-by-design.
@@ -278,11 +278,11 @@ export default function CareersPage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-12"
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-4">
               How We Work
             </p>
             <h2
-              className="text-text-0"
+              className="text-[#F0F4F8]"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -316,7 +316,7 @@ export default function CareersPage() {
                   className="w-3 h-3 rounded-full flex-shrink-0"
                   style={{ background: item.color }}
                 />
-                <p className="text-text-0 font-medium">{item.label}</p>
+                <p className="text-[#F0F4F8] font-medium">{item.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -326,7 +326,7 @@ export default function CareersPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            className="text-text-0/60 text-sm italic leading-relaxed border-l-2 pl-4"
+            className="text-[#F0F4F8]/60 text-sm italic leading-relaxed border-l-2 pl-4"
             style={{ borderColor: "rgba(43,126,193,0.4)" }}
           >
             &ldquo;We don&apos;t believe in managed services. We believe in architecting resilience
@@ -345,11 +345,11 @@ export default function CareersPage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-12"
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-4">
               Growth
             </p>
             <h2
-              className="text-text-0"
+              className="text-[#F0F4F8]"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -382,7 +382,7 @@ export default function CareersPage() {
                   className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
                   style={{ background: i % 2 === 0 ? "#F47920" : "#2B7EC1" }}
                 />
-                <p className="text-text-2 text-sm leading-relaxed">{item}</p>
+                <p className="text-[#8896AB] text-sm leading-relaxed">{item}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -392,7 +392,7 @@ export default function CareersPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            className="text-text-0/60 text-sm italic leading-relaxed border-l-2 pl-4"
+            className="text-[#F0F4F8]/60 text-sm italic leading-relaxed border-l-2 pl-4"
             style={{ borderColor: "rgba(244,121,32,0.4)" }}
           >
             &ldquo;We invest in people who invest in thinking.&rdquo;
@@ -413,11 +413,11 @@ export default function CareersPage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-12"
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-4">
               Open Roles
             </p>
             <h2
-              className="text-text-0"
+              className="text-[#F0F4F8]"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -461,7 +461,7 @@ export default function CareersPage() {
                       className="w-2 h-2 rounded-full flex-shrink-0"
                       style={{ background: role.color }}
                     />
-                    <h3 className="text-text-0 font-semibold group-hover:text-white transition-colors">
+                    <h3 className="text-[#F0F4F8] font-semibold group-hover:text-white transition-colors">
                       {role.title}
                     </h3>
                   </div>
@@ -506,7 +506,7 @@ export default function CareersPage() {
           className="max-w-2xl mx-auto px-6"
         >
           <h2
-            className="text-text-0 mb-4"
+            className="text-[#F0F4F8] mb-4"
             style={{
               fontSize: "clamp(28px, 3.5vw, 48px)",
               fontWeight: 800,
@@ -516,12 +516,12 @@ export default function CareersPage() {
           >
             Explore opportunities
           </h2>
-          <p className="text-text-2 mb-8" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+          <p className="text-[#8896AB] mb-8" style={{ fontSize: "16px", lineHeight: 1.7 }}>
             To explore opportunities, reach out to:
           </p>
           <a
             href="mailto:careers@cyberaiq.com"
-            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-accent text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:bg-accent-dim"
+            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-[#F47920] text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:bg-[#c96218]"
             style={{ fontSize: "16px" }}
           >
             careers@cyberaiq.com

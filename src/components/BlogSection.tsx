@@ -39,11 +39,11 @@ export default function BlogSection() {
           viewport={{ once: true, amount: 0.2 }}
           className="mb-16"
         >
-          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
+          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-4">
             Insights
           </p>
           <h2
-            className="text-text-0"
+            className="text-[#F0F4F8]"
             style={{
               fontSize: "clamp(28px, 3.5vw, 48px)",
               fontWeight: 800,
@@ -67,7 +67,7 @@ export default function BlogSection() {
             <motion.div
               key={i}
               variants={staggerItem}
-              className="group p-7 rounded-2xl bg-surface-1 border border-[var(--color-border)] transition-all duration-300 cursor-pointer"
+              className="group p-7 rounded-2xl bg-[#0A0D12] border border-[var(--color-border)] transition-all duration-300 cursor-pointer"
             >
               <div className="mb-5">
                 <span
@@ -77,10 +77,10 @@ export default function BlogSection() {
                   {post.tag}
                 </span>
               </div>
-              <h3 className="text-text-0 font-semibold text-base mb-3 leading-snug group-hover:text-white transition-colors">
+              <h3 className="text-[#F0F4F8] font-semibold text-base mb-3 leading-snug group-hover:text-white transition-colors">
                 {post.title}
               </h3>
-              <p className="text-text-2 text-sm leading-relaxed mb-6">
+              <p className="text-[#8896AB] text-sm leading-relaxed mb-6">
                 {post.description}
               </p>
               <div
@@ -117,14 +117,14 @@ export default function BlogSection() {
         >
           <Link
             href="#"
-            className="text-[13px] font-semibold text-accent hover:text-accent-dim transition-colors duration-200"
+            className="text-[13px] font-semibold text-[#F47920] hover:text-[#c96218] transition-colors duration-200"
           >
             View all blogs
           </Link>
-          <span className="text-text-3/30">|</span>
+          <span className="text-[#5A6678]/30">|</span>
           <Link
             href="#"
-            className="text-[13px] font-semibold text-secondary hover:text-secondary/80 transition-colors duration-200"
+            className="text-[13px] font-semibold text-[#2B7EC1] hover:text-[#2B7EC1]/80 transition-colors duration-200"
           >
             View all cases
           </Link>

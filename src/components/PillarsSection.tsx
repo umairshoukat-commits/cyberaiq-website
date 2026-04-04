@@ -122,11 +122,11 @@ export default function PillarsSection() {
           viewport={{ once: true, amount: 0.2 }}
           className="mb-16"
         >
-          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-4">
+          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-4">
             Our Services
           </p>
           <h2
-            className="text-text-0"
+            className="text-[#F0F4F8]"
             style={{
               fontSize: "clamp(28px, 3.5vw, 48px)",
               fontWeight: 800,
@@ -150,7 +150,7 @@ export default function PillarsSection() {
             <motion.div key={pillar.id} variants={staggerItem}>
               <Link href={pillar.href} className="block h-full group">
                 <div
-                  className="h-full p-8 rounded-2xl bg-surface-1 border border-[var(--color-border)] relative overflow-hidden transition-all duration-300 hover:-translate-y-[2px]"
+                  className="h-full p-8 rounded-2xl bg-[#0A0D12] border border-[var(--color-border)] relative overflow-hidden transition-all duration-300 hover:-translate-y-[2px]"
                   style={{
                     boxShadow: `inset 0 2px 0 0 ${pillar.accent}30`,
                   }}
@@ -171,10 +171,10 @@ export default function PillarsSection() {
                     {pillar.icon}
                   </div>
 
-                  <h3 className="text-text-0 text-lg font-semibold mb-3 tracking-tight group-hover:text-white transition-colors leading-snug">
+                  <h3 className="text-[#F0F4F8] text-lg font-semibold mb-3 tracking-tight group-hover:text-white transition-colors leading-snug">
                     {pillar.title}
                   </h3>
-                  <p className="text-text-2 text-sm leading-relaxed mb-6">
+                  <p className="text-[#8896AB] text-sm leading-relaxed mb-6">
                     {pillar.description}
                   </p>
 

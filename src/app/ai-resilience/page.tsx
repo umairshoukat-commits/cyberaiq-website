@@ -105,12 +105,12 @@ export default function AIResiliencePage() {
         />
         <div className="max-w-[1280px] mx-auto px-6 md:px-20 relative z-10">
           <div className="max-w-3xl">
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-6">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-6">
               AI Resilience
             </p>
             <h1
               ref={h1Ref}
-              className="text-text-0 mb-6"
+              className="text-[#F0F4F8] mb-6"
               style={{
                 fontSize: "clamp(36px, 4.5vw, 64px)",
                 fontWeight: 900,
@@ -124,7 +124,7 @@ export default function AIResiliencePage() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-text-1 leading-relaxed max-w-xl"
+              className="text-[#C5CDD8] leading-relaxed max-w-xl"
               style={{ fontSize: "18px", lineHeight: 1.7 }}
             >
               Intelligence That Endures. Security That Adapts. Trust That Scales.
@@ -146,16 +146,16 @@ export default function AIResiliencePage() {
             viewport={{ once: true, amount: 0.2 }}
             className="max-w-3xl space-y-6"
           >
-            <p className="text-text-2 leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+            <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
               AI is now the engine of modern business — but only resilient AI can survive the
               velocity of today&apos;s threats, disruptions, and technological shifts.
             </p>
-            <p className="text-text-2 leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+            <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
               At CYBERAIQ AG, we Architect AI systems that don&apos;t just work. They withstand.
               Adapt. Evolve.
             </p>
             <p
-              className="text-text-0/60 text-sm italic leading-relaxed border-l-2 pl-4"
+              className="text-[#F0F4F8]/60 text-sm italic leading-relaxed border-l-2 pl-4"
               style={{ borderColor: "rgba(244,121,32,0.4)" }}
             >
               This is intelligence built for the real world.
@@ -174,11 +174,11 @@ export default function AIResiliencePage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-14"
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-4">
               Definition
             </p>
             <h2
-              className="text-text-0 mb-8"
+              className="text-[#F0F4F8] mb-8"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -189,7 +189,7 @@ export default function AIResiliencePage() {
               What AI Resilience Means
             </h2>
             <p
-              className="text-text-2 leading-relaxed max-w-3xl mb-10"
+              className="text-[#8896AB] leading-relaxed max-w-3xl mb-10"
               style={{ fontSize: "16px", lineHeight: 1.7 }}
             >
               AI Resilience is the capability of intelligent systems to remain secure, reliable,
@@ -206,7 +206,7 @@ export default function AIResiliencePage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-10"
           >
-            <p className="text-text-0 font-semibold text-sm mb-6">It protects from:</p>
+            <p className="text-[#F0F4F8] font-semibold text-sm mb-6">It protects from:</p>
           </motion.div>
 
           <motion.div
@@ -230,7 +230,7 @@ export default function AIResiliencePage() {
                   className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
                   style={{ background: i % 2 === 0 ? "#F47920" : "#2B7EC1" }}
                 />
-                <p className="text-text-2 text-sm leading-relaxed">{threat}</p>
+                <p className="text-[#8896AB] text-sm leading-relaxed">{threat}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -240,7 +240,7 @@ export default function AIResiliencePage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            className="text-text-0/60 text-sm italic leading-relaxed border-l-2 pl-4"
+            className="text-[#F0F4F8]/60 text-sm italic leading-relaxed border-l-2 pl-4"
             style={{ borderColor: "rgba(244,121,32,0.4)" }}
           >
             Resilience is not a feature. It&apos;s a foundation.
@@ -261,11 +261,11 @@ export default function AIResiliencePage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-14"
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-4">
               The Framework
             </p>
             <h2
-              className="text-text-0"
+              className="text-[#F0F4F8]"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -302,10 +302,10 @@ export default function AIResiliencePage() {
                 >
                   {pillar.number}
                 </span>
-                <h3 className="text-text-0 font-semibold mb-3 text-lg leading-snug">
+                <h3 className="text-[#F0F4F8] font-semibold mb-3 text-lg leading-snug">
                   {pillar.title}
                 </h3>
-                <p className="text-text-2 text-sm leading-relaxed">{pillar.description}</p>
+                <p className="text-[#8896AB] text-sm leading-relaxed">{pillar.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -322,11 +322,11 @@ export default function AIResiliencePage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-14"
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-4">
               Why It Matters
             </p>
             <h2
-              className="text-text-0 mb-6"
+              className="text-[#F0F4F8] mb-6"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -337,7 +337,7 @@ export default function AIResiliencePage() {
               Why AI Resilience Matters Now
             </h2>
             <p
-              className="text-text-2 leading-relaxed max-w-3xl"
+              className="text-[#8896AB] leading-relaxed max-w-3xl"
               style={{ fontSize: "16px", lineHeight: 1.7 }}
             >
               AI is no longer optional — it&apos;s mission-critical. But mission-critical systems
@@ -366,7 +366,7 @@ export default function AIResiliencePage() {
                   className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
                   style={{ background: i % 2 === 0 ? "#F47920" : "#2B7EC1" }}
                 />
-                <p className="text-text-2 leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+                <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
                   {benefit}
                 </p>
               </motion.div>
@@ -378,7 +378,7 @@ export default function AIResiliencePage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            className="text-text-0/60 text-sm italic leading-relaxed border-l-2 pl-4"
+            className="text-[#F0F4F8]/60 text-sm italic leading-relaxed border-l-2 pl-4"
             style={{ borderColor: "rgba(43,126,193,0.4)" }}
           >
             Resilience is the new currency of trust.
@@ -399,11 +399,11 @@ export default function AIResiliencePage() {
             viewport={{ once: true, amount: 0.2 }}
             className="max-w-3xl space-y-6"
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-4">
               Our Approach
             </p>
             <h2
-              className="text-text-0 mb-6"
+              className="text-[#F0F4F8] mb-6"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -413,7 +413,7 @@ export default function AIResiliencePage() {
             >
               We build AI that doesn&apos;t just perform — it endures.
             </h2>
-            <p className="text-text-2 leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+            <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
               Our approach blends deep cybersecurity expertise, cloud engineering mastery, and
               forward-looking quantum readiness. The result is AI that becomes stronger with
               every challenge. This is resilience engineered for the enterprises that refuse to
@@ -433,7 +433,7 @@ export default function AIResiliencePage() {
           className="max-w-2xl mx-auto px-6"
         >
           <h2
-            className="text-text-0 mb-4"
+            className="text-[#F0F4F8] mb-4"
             style={{
               fontSize: "clamp(28px, 3.5vw, 48px)",
               fontWeight: 800,
@@ -443,13 +443,13 @@ export default function AIResiliencePage() {
           >
             Ready to Build Resilient Intelligence?
           </h2>
-          <p className="text-text-2 mb-8" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+          <p className="text-[#8896AB] mb-8" style={{ fontSize: "16px", lineHeight: 1.7 }}>
             CYBERAIQ AG helps organizations design, deploy, and scale AI systems that are
             secure, robust, and future-ready.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-accent text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:bg-accent-dim"
+            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-[#F47920] text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:bg-[#c96218]"
             style={{ fontSize: "16px" }}
           >
             Let&apos;s build intelligence that lasts

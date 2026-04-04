@@ -5,22 +5,18 @@ import { useFrame } from "@react-three/fiber";
 import {
   EffectComposer,
   Bloom,
-  ChromaticAberration,
-  Vignette,
 } from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
 import * as THREE from "three";
 
-/* ---------- Fibonacci sphere node positions ---------- */
-const NODE_COUNT = 60;
-const SPHERE_RADIUS = 3.2;
+const NODE_COUNT = 50;
+const SPHERE_RADIUS = 3.0;
 const CONNECT_DIST = 1.5;
 
 function fibonacciSphere(count: number, radius: number): THREE.Vector3[] {
   const points: THREE.Vector3[] = [];
   const goldenAngle = Math.PI * (3 - Math.sqrt(5));
   for (let i = 0; i < count; i++) {
-    const y = 1 - (i / (count - 1)) * 2; // -1 to 1
+    const y = 1 - (i / (count - 1)) * 2;
     const r = Math.sqrt(1 - y * y);
     const theta = goldenAngle * i;
     points.push(
@@ -34,7 +30,6 @@ function fibonacciSphere(count: number, radius: number): THREE.Vector3[] {
   return points;
 }
 
-/* ---------- Custom fresnel shader ---------- */
 const nodeVertexShader = /* glsl */ `
   varying vec3 vNormal;
   varying vec3 vViewDir;
@@ -58,7 +53,6 @@ const nodeFragmentShader = /* glsl */ `
   }
 `;
 
-/* ---------- Nodes (instanced for perf) ---------- */
 function Nodes({ positions }: { positions: THREE.Vector3[] }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const dummy = useMemo(() => new THREE.Object3D(), []);
@@ -72,22 +66,15 @@ function Nodes({ positions }: { positions: THREE.Vector3[] }) {
     []
   );
 
-  // Set initial transforms
-  useMemo(() => {
-    // Will be set on first frame
-  }, []);
-
   useFrame(({ clock }) => {
     if (!meshRef.current) return;
     const t = clock.getElapsedTime();
 
-    // Update pulse uniform
     if (materialRef.current) {
       materialRef.current.uniforms.uPulse.value =
         Math.sin(t * 0.5) * 0.3 + 0.7;
     }
 
-    // Update each instance
     for (let i = 0; i < positions.length; i++) {
       dummy.position.copy(positions[i]);
       dummy.updateMatrix();
@@ -111,10 +98,7 @@ function Nodes({ positions }: { positions: THREE.Vector3[] }) {
   );
 }
 
-/* ---------- Edges via LineSegments ---------- */
 function Edges({ positions }: { positions: THREE.Vector3[] }) {
-  const lineRef = useRef<THREE.LineSegments>(null);
-
   const geometry = useMemo(() => {
     const verts: number[] = [];
     for (let i = 0; i < positions.length; i++) {
@@ -136,29 +120,24 @@ function Edges({ positions }: { positions: THREE.Vector3[] }) {
   }, [positions]);
 
   return (
-    <lineSegments ref={lineRef} geometry={geometry}>
+    <lineSegments geometry={geometry}>
       <lineBasicMaterial
         color="#F47920"
         transparent
-        opacity={0.08}
+        opacity={0.06}
         depthWrite={false}
       />
     </lineSegments>
   );
 }
 
-/* ---------- Scene wrapper ---------- */
 function Scene() {
   const groupRef = useRef<THREE.Group>(null);
-
-  const positions = useMemo(
-    () => fibonacciSphere(NODE_COUNT, SPHERE_RADIUS),
-    []
-  );
+  const positions = useMemo(() => fibonacciSphere(NODE_COUNT, SPHERE_RADIUS), []);
 
   useFrame(() => {
     if (!groupRef.current) return;
-    groupRef.current.rotation.y += 0.0003;
+    groupRef.current.rotation.y += 0.0002;
   });
 
   return (
@@ -169,22 +148,16 @@ function Scene() {
   );
 }
 
-/* ---------- Main export ---------- */
 export default function NetworkGraph() {
   return (
     <>
       <Scene />
-      <EffectComposer>
+      <EffectComposer multisampling={0}>
         <Bloom
-          luminanceThreshold={1.0}
-          intensity={0.4}
+          luminanceThreshold={0.9}
+          intensity={0.3}
           mipmapBlur
         />
-        <ChromaticAberration
-          blendFunction={BlendFunction.NORMAL}
-          offset={new THREE.Vector2(0.0003, 0.0003)}
-        />
-        <Vignette darkness={0.8} offset={0.3} />
       </EffectComposer>
     </>
   );

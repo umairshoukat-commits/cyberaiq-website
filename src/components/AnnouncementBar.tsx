@@ -14,7 +14,7 @@ export default function AnnouncementBar() {
     >
       <Link
         href="/ai-resilience"
-        className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent hover:text-accent-dim transition-colors duration-200 inline-flex items-center gap-2 group"
+        className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] hover:text-[#c96218] transition-colors duration-200 inline-flex items-center gap-2 group"
       >
         Introducing AI Resilience
         <svg

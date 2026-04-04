@@ -24,11 +24,11 @@ export default function RealitySection() {
           viewport={{ once: true, amount: 0.2 }}
           className="mb-16"
         >
-          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-4">
+          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-4">
             The Reality
           </p>
           <h2
-            className="text-text-0"
+            className="text-[#F0F4F8]"
             style={{
               fontSize: "clamp(28px, 3.5vw, 48px)",
               fontWeight: 800,
@@ -52,7 +52,7 @@ export default function RealitySection() {
             <motion.div
               key={truth.number}
               variants={staggerItem}
-              className="relative p-8 rounded-2xl bg-surface-1 border border-[var(--color-border)] overflow-hidden group transition-all duration-300 hover:-translate-y-[2px]"
+              className="relative p-8 rounded-2xl bg-[#0A0D12] border border-[var(--color-border)] overflow-hidden group transition-all duration-300 hover:-translate-y-[2px]"
               style={{
                 boxShadow: `inset 0 2px 0 0 ${truth.accent}30`,
               }}
@@ -73,7 +73,7 @@ export default function RealitySection() {
                   {truth.number}
                 </span>
                 <h3
-                  className="text-text-0 font-semibold text-base leading-snug"
+                  className="text-[#F0F4F8] font-semibold text-base leading-snug"
                   style={{ textWrap: "balance" }}
                 >
                   {truth.title}

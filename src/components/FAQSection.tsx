@@ -48,11 +48,11 @@ export default function FAQSection() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-4">
               FAQ
             </p>
             <h2
-              className="text-text-0 mb-6"
+              className="text-[#F0F4F8] mb-6"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -63,7 +63,7 @@ export default function FAQSection() {
             >
               Common questions
             </h2>
-            <p className="text-text-2 leading-[1.7]" style={{ fontSize: "16px" }}>
+            <p className="text-[#8896AB] leading-[1.7]" style={{ fontSize: "16px" }}>
               We get asked these often. If your question isn&apos;t here, reach out directly.
             </p>
           </motion.div>
@@ -88,7 +88,7 @@ export default function FAQSection() {
                     onClick={() => setOpenIndex(openIndex === i ? null : i)}
                     className="w-full flex items-center justify-between py-6 text-left group"
                   >
-                    <span className="text-text-0 font-semibold pr-8" style={{ fontSize: "16px" }}>
+                    <span className="text-[#F0F4F8] font-semibold pr-8" style={{ fontSize: "16px" }}>
                       {faq.question}
                     </span>
                     <motion.svg
@@ -119,7 +119,7 @@ export default function FAQSection() {
                         className="overflow-hidden"
                       >
                         <p
-                          className="text-text-2 pb-6 leading-[1.7]"
+                          className="text-[#8896AB] pb-6 leading-[1.7]"
                           style={{ fontSize: "15px" }}
                         >
                           {faq.answer}

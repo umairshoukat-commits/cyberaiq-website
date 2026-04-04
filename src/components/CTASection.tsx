@@ -23,11 +23,11 @@ export default function CTASection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-6">
+          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-6">
             Ready to Transform?
           </p>
           <h2
-            className="text-text-0 mb-6"
+            className="text-[#F0F4F8] mb-6"
             style={{
               fontSize: "clamp(28px, 3.5vw, 48px)",
               fontWeight: 800,
@@ -39,14 +39,14 @@ export default function CTASection() {
             Start a Strategic Conversation
           </h2>
           <p
-            className="text-text-2 max-w-[520px] mx-auto mb-10 leading-[1.7]"
+            className="text-[#8896AB] max-w-[520px] mx-auto mb-10 leading-[1.7]"
             style={{ fontSize: "16px" }}
           >
             Transformation starts with clarity.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-accent text-white font-semibold transition-all duration-300 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:-translate-y-0.5 hover:bg-accent-dim"
+            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-[#F47920] text-white font-semibold transition-all duration-300 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:-translate-y-0.5 hover:bg-[#c96218]"
             style={{ fontSize: "16px" }}
           >
             Start a Conversation

@@ -55,11 +55,11 @@ export default function HyperscalerTicker() {
           viewport={{ once: true, amount: 0.2 }}
           className="text-center"
         >
-          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
+          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-4">
             Hyperscaler Partners
           </p>
           <h2
-            className="text-text-0 mb-5"
+            className="text-[#F0F4F8] mb-5"
             style={{
               fontSize: "clamp(28px, 3.5vw, 48px)",
               fontWeight: 800,
@@ -70,7 +70,7 @@ export default function HyperscalerTicker() {
           >
             Hyperscaler&apos;s at the core
           </h2>
-          <p className="text-text-2 max-w-xl mx-auto leading-[1.7]" style={{ fontSize: "16px" }}>
+          <p className="text-[#8896AB] max-w-xl mx-auto leading-[1.7]" style={{ fontSize: "16px" }}>
             CYBERAIQ AG is built natively on the world&apos;s leading hyperscalers, forming the
             foundation of our architecture, automation, and scale.
           </p>
@@ -99,7 +99,7 @@ export default function HyperscalerTicker() {
             {tickerItems.map((partner, i) => (
               <div
                 key={i}
-                className="flex items-center justify-center px-10 py-5 rounded-xl shrink-0 bg-surface-1 border border-[var(--color-border)]"
+                className="flex items-center justify-center px-10 py-5 rounded-xl shrink-0 bg-[#0A0D12] border border-[var(--color-border)]"
                 style={{ opacity: 0.55, minWidth: 200 }}
               >
                 {partner.logo}
@@ -124,7 +124,7 @@ export default function HyperscalerTicker() {
         ].map((p) => (
           <div
             key={p.name}
-            className="p-6 rounded-2xl bg-surface-1 border border-[var(--color-border)] text-center"
+            className="p-6 rounded-2xl bg-[#0A0D12] border border-[var(--color-border)] text-center"
           >
             <div
               className="w-10 h-10 rounded-full mx-auto mb-4 flex items-center justify-center"
@@ -132,7 +132,7 @@ export default function HyperscalerTicker() {
             >
               <div className="w-3 h-3 rounded-full" style={{ background: p.color }} />
             </div>
-            <h3 className="text-text-0 font-semibold text-sm">{p.name}</h3>
+            <h3 className="text-[#F0F4F8] font-semibold text-sm">{p.name}</h3>
           </div>
         ))}
       </motion.div>

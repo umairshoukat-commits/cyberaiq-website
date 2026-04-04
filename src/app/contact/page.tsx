@@ -38,7 +38,7 @@ export default function ContactPage() {
   };
 
   const inputClass =
-    "w-full px-4 py-3 rounded-xl text-text-0 text-sm outline-none transition-all duration-200 placeholder:text-text-3";
+    "w-full px-4 py-3 rounded-xl text-[#F0F4F8] text-sm outline-none transition-all duration-200 placeholder:text-[#5A6678]";
   const inputStyle = {
     background: "var(--color-surface-2)",
     border: "1px solid var(--color-border)",
@@ -65,12 +65,12 @@ export default function ContactPage() {
         />
         <div className="max-w-[1280px] mx-auto px-6 md:px-20">
           <div className="max-w-2xl">
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-6">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-6">
               Contact Us
             </p>
             <h1
               ref={h1Ref}
-              className="text-text-0 mb-6"
+              className="text-[#F0F4F8] mb-6"
               style={{
                 fontSize: "clamp(36px, 4.5vw, 64px)",
                 fontWeight: 900,
@@ -84,7 +84,7 @@ export default function ContactPage() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-text-2 leading-relaxed"
+              className="text-[#8896AB] leading-relaxed"
               style={{ fontSize: "16px", lineHeight: 1.7 }}
             >
               Transformation starts with clarity. Our team is here to help you navigate
@@ -114,7 +114,7 @@ export default function ContactPage() {
                   border: "1px solid rgba(244,121,32,0.2)",
                 }}
               >
-                <div className="w-16 h-16 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 rounded-full bg-[#F47920]/10 border border-accent/30 flex items-center justify-center mx-auto mb-6">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M5 12l4 4L19 7"
@@ -125,10 +125,10 @@ export default function ContactPage() {
                     />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-black text-text-0 tracking-tight mb-3">
+                <h2 className="text-2xl font-black text-[#F0F4F8] tracking-tight mb-3">
                   Message Received
                 </h2>
-                <p className="text-text-2">
+                <p className="text-[#8896AB]">
                   Thank you for reaching out. Our team will be in touch shortly.
                 </p>
               </motion.div>
@@ -145,7 +145,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label
-                      className="block text-text-2 text-sm mb-2 font-medium"
+                      className="block text-[#8896AB] text-sm mb-2 font-medium"
                       htmlFor="name"
                     >
                       Name *
@@ -169,7 +169,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label
-                      className="block text-text-2 text-sm mb-2 font-medium"
+                      className="block text-[#8896AB] text-sm mb-2 font-medium"
                       htmlFor="email"
                     >
                       Email *
@@ -193,7 +193,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label
-                      className="block text-text-2 text-sm mb-2 font-medium"
+                      className="block text-[#8896AB] text-sm mb-2 font-medium"
                       htmlFor="organization"
                     >
                       Organization *
@@ -219,7 +219,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label
-                      className="block text-text-2 text-sm mb-2 font-medium"
+                      className="block text-[#8896AB] text-sm mb-2 font-medium"
                       htmlFor="role"
                     >
                       Role
@@ -243,7 +243,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-text-2 text-sm mb-3 font-medium">
+                  <label className="block text-[#8896AB] text-sm mb-3 font-medium">
                     Area of Interest *
                   </label>
                   <div className="flex flex-wrap gap-2">
@@ -268,7 +268,7 @@ export default function ContactPage() {
 
                 <div>
                   <label
-                    className="block text-text-2 text-sm mb-2 font-medium"
+                    className="block text-[#8896AB] text-sm mb-2 font-medium"
                     htmlFor="message"
                   >
                     Message
@@ -294,7 +294,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-xl bg-accent text-white font-semibold hover:bg-accent-dim transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-orange-500/20"
+                  className="w-full py-4 rounded-xl bg-[#F47920] text-white font-semibold hover:bg-[#c96218] transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-orange-500/20"
                   style={{ fontSize: "16px" }}
                 >
                   Let&apos;s Build the Future of Trust!
@@ -375,8 +375,8 @@ export default function ContactPage() {
                   {item.icon}
                 </div>
                 <div>
-                  <p className="text-text-2 text-xs font-medium mb-1">{item.label}</p>
-                  <p className="text-text-0 font-semibold group-hover:text-accent transition-colors duration-200">
+                  <p className="text-[#8896AB] text-xs font-medium mb-1">{item.label}</p>
+                  <p className="text-[#F0F4F8] font-semibold group-hover:text-[#F47920] transition-colors duration-200">
                     {item.value}
                   </p>
                 </div>
@@ -390,7 +390,7 @@ export default function ContactPage() {
                 border: "1px solid rgba(43,126,193,0.12)",
               }}
             >
-              <h3 className="text-text-0 font-semibold mb-5 text-sm">Why talk to us?</h3>
+              <h3 className="text-[#F0F4F8] font-semibold mb-5 text-sm">Why talk to us?</h3>
               {[
                 "Architecture-first, outcomes-driven approach",
                 "No hardware. No legacy models.",
@@ -399,7 +399,7 @@ export default function ContactPage() {
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3 mb-3 last:mb-0">
                   <div className="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0" />
-                  <span className="text-text-2 text-sm">{item}</span>
+                  <span className="text-[#8896AB] text-sm">{item}</span>
                 </div>
               ))}
             </div>

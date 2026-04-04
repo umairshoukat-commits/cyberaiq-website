@@ -59,7 +59,7 @@ function AnimatedCounter({
   return (
     <span className="tabular-nums">
       {display}
-      <span className="text-2xl lg:text-3xl font-black text-accent ml-0.5">
+      <span className="text-2xl lg:text-3xl font-black text-[#F47920] ml-0.5">
         {suffix}
       </span>
     </span>
@@ -84,11 +84,11 @@ export default function StatsSection() {
           viewport={{ once: true, amount: 0.2 }}
           className="text-center mb-16"
         >
-          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
+          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-4">
             By The Numbers
           </p>
           <h2
-            className="text-text-0"
+            className="text-[#F0F4F8]"
             style={{
               fontSize: "clamp(28px, 3.5vw, 48px)",
               fontWeight: 800,
@@ -114,14 +114,14 @@ export default function StatsSection() {
               }}
               className="text-center"
             >
-              <div className="text-4xl lg:text-5xl font-black text-text-0 mb-3">
+              <div className="text-4xl lg:text-5xl font-black text-[#F0F4F8] mb-3">
                 <AnimatedCounter
                   target={stat.value}
                   suffix={stat.suffix}
                   inView={inView}
                 />
               </div>
-              <p className="text-text-3 text-xs font-medium tracking-wider uppercase leading-snug px-2">
+              <p className="text-[#5A6678] text-xs font-medium tracking-wider uppercase leading-snug px-2">
                 {stat.label}
               </p>
             </motion.div>

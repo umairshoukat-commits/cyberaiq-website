@@ -199,12 +199,12 @@ export default function PartnersPage() {
         />
         <div className="max-w-[1280px] mx-auto px-6 md:px-20">
           <div className="text-center max-w-3xl mx-auto">
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-6">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-6">
               Partners
             </p>
             <h1
               ref={h1Ref}
-              className="text-text-0 mb-6"
+              className="text-[#F0F4F8] mb-6"
               style={{
                 fontSize: "clamp(36px, 4.5vw, 64px)",
                 fontWeight: 900,
@@ -218,7 +218,7 @@ export default function PartnersPage() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-text-2 leading-relaxed max-w-xl mx-auto"
+              className="text-[#8896AB] leading-relaxed max-w-xl mx-auto"
               style={{ fontSize: "16px", lineHeight: 1.7 }}
             >
               CYBERAIQ AG is built natively on the world&apos;s leading hyperscalers, forming the
@@ -249,7 +249,7 @@ export default function PartnersPage() {
               <div className={i % 2 === 1 ? "lg:order-2" : ""}>
                 <div className="mb-6">{partner.logo}</div>
                 <h2
-                  className="text-text-0 mb-6"
+                  className="text-[#F0F4F8] mb-6"
                   style={{
                     fontSize: "clamp(28px, 3.5vw, 48px)",
                     fontWeight: 800,
@@ -260,7 +260,7 @@ export default function PartnersPage() {
                   {partner.name}
                 </h2>
                 <p
-                  className="text-text-2 leading-relaxed"
+                  className="text-[#8896AB] leading-relaxed"
                   style={{ fontSize: "16px", lineHeight: 1.7 }}
                 >
                   {partner.description}
@@ -276,7 +276,7 @@ export default function PartnersPage() {
                   boxShadow: `inset 0 2px 0 0 ${partner.color}25`,
                 }}
               >
-                <h3 className="text-text-0 font-semibold mb-6 text-[11px] uppercase tracking-[0.15em]">
+                <h3 className="text-[#F0F4F8] font-semibold mb-6 text-[11px] uppercase tracking-[0.15em]">
                   Solutions &amp; Platforms
                 </h3>
                 <ul className="space-y-4">
@@ -294,7 +294,7 @@ export default function PartnersPage() {
                           style={{ background: partner.color }}
                         />
                       </div>
-                      <span className="text-text-2 text-sm">{s}</span>
+                      <span className="text-[#8896AB] text-sm">{s}</span>
                     </li>
                   ))}
                 </ul>
@@ -314,7 +314,7 @@ export default function PartnersPage() {
           className="max-w-[1280px] mx-auto px-6 md:px-20 text-center"
         >
           <h2
-            className="text-text-0 mb-4"
+            className="text-[#F0F4F8] mb-4"
             style={{
               fontSize: "clamp(28px, 3.5vw, 48px)",
               fontWeight: 800,
@@ -324,13 +324,13 @@ export default function PartnersPage() {
           >
             Partner with CYBERAIQ AG
           </h2>
-          <p className="text-text-2 mb-8" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+          <p className="text-[#8896AB] mb-8" style={{ fontSize: "16px", lineHeight: 1.7 }}>
             Are you a technology vendor or integrator looking to build joint solutions?
             Let&apos;s talk.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-accent text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:bg-accent-dim"
+            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-[#F47920] text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:bg-[#c96218]"
             style={{ fontSize: "16px" }}
           >
             Get in Touch

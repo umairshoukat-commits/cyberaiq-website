@@ -9,8 +9,11 @@ export default function HeroScene() {
     <Canvas
       camera={{ position: [0, 0, 5], fov: 60 }}
       dpr={[1, 1.5]}
-      gl={{ antialias: false, alpha: true }}
+      gl={{ antialias: false, alpha: true, powerPreference: "low-power" }}
       style={{ position: "absolute", inset: 0 }}
+      onCreated={({ gl }) => {
+        gl.setClearColor(0x000000, 0);
+      }}
     >
       <Suspense fallback={null}>
         <NetworkGraph />

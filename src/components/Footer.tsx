@@ -22,7 +22,7 @@ const serviceLinks = [
 export default function Footer() {
   return (
     <footer
-      className="border-t border-border pt-16 pb-8 px-6 md:px-20"
+      className="border-t border-[rgba(255,255,255,0.06)] pt-16 pb-8 px-6 md:px-20"
       style={{ background: "#050710" }}
     >
       <div className="max-w-[1280px] mx-auto">
@@ -39,10 +39,10 @@ export default function Footer() {
                 unoptimized
               />
             </Link>
-            <p className="text-text-2 text-sm leading-relaxed max-w-xs mb-2">
+            <p className="text-[#8896AB] text-sm leading-relaxed max-w-xs mb-2">
               Converging trust in the Age of AI, Cloud, Cyber &amp; Quantum.
             </p>
-            <p className="text-text-2 text-sm leading-relaxed max-w-xs">
+            <p className="text-[#8896AB] text-sm leading-relaxed max-w-xs">
               Hyperscaler-first. Automation-led. Built for what&apos;s next.
             </p>
             <div className="flex gap-4 mt-6">
@@ -50,7 +50,7 @@ export default function Footer() {
                 href="https://linkedin.com/company/cyberaiq"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-border-hover flex items-center justify-center text-text-2 hover:border-accent hover:text-accent transition-all duration-200"
+                className="w-9 h-9 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center text-[#8896AB] hover:border-accent hover:text-[#F47920] transition-all duration-200"
                 aria-label="LinkedIn"
               >
                 <svg
@@ -66,7 +66,7 @@ export default function Footer() {
             <div className="mt-6 space-y-1">
               <a
                 href="mailto:contact@cyberaiq.com"
-                className="flex items-center gap-2 text-text-2 text-sm hover:text-accent transition-colors duration-200"
+                className="flex items-center gap-2 text-[#8896AB] text-sm hover:text-[#F47920] transition-colors duration-200"
               >
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
                   <rect
@@ -89,7 +89,7 @@ export default function Footer() {
               </a>
               <a
                 href="tel:+97148378349"
-                className="flex items-center gap-2 text-text-2 text-sm hover:text-accent transition-colors duration-200"
+                className="flex items-center gap-2 text-[#8896AB] text-sm hover:text-[#F47920] transition-colors duration-200"
               >
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
                   <path
@@ -106,7 +106,7 @@ export default function Footer() {
 
           {/* Organization links */}
           <div>
-            <h4 className="text-text-0 font-semibold text-sm mb-5">
+            <h4 className="text-[#F0F4F8] font-semibold text-sm mb-5">
               Organization
             </h4>
             <ul className="space-y-3">
@@ -114,7 +114,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-text-2 text-sm hover:text-accent transition-colors duration-200"
+                    className="text-[#8896AB] text-sm hover:text-[#F47920] transition-colors duration-200"
                   >
                     {item.label}
                   </Link>
@@ -125,7 +125,7 @@ export default function Footer() {
 
           {/* Services links */}
           <div>
-            <h4 className="text-text-0 font-semibold text-sm mb-5">
+            <h4 className="text-[#F0F4F8] font-semibold text-sm mb-5">
               Services
             </h4>
             <ul className="space-y-3">
@@ -133,7 +133,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-text-2 text-sm hover:text-accent transition-colors duration-200"
+                    className="text-[#8896AB] text-sm hover:text-[#F47920] transition-colors duration-200"
                   >
                     {item.label}
                   </Link>
@@ -144,20 +144,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-text-3 text-xs">
+        <div className="pt-8 border-t border-[rgba(255,255,255,0.06)] flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-[#5A6678] text-xs">
             &copy; 2026 CYBERAIQ AG. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link
               href="#"
-              className="text-text-3 text-xs hover:text-text-0 transition-colors duration-200"
+              className="text-[#5A6678] text-xs hover:text-[#F0F4F8] transition-colors duration-200"
             >
               Terms &amp; Conditions
             </Link>
             <Link
               href="#"
-              className="text-text-3 text-xs hover:text-text-0 transition-colors duration-200"
+              className="text-[#5A6678] text-xs hover:text-[#F0F4F8] transition-colors duration-200"
             >
               Privacy Policy
             </Link>

@@ -142,12 +142,12 @@ export default function AboutPage() {
         />
         <div className="max-w-[1280px] mx-auto px-6 md:px-20 relative z-10">
           <div className="max-w-3xl">
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-6">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-6">
               Who We Are
             </p>
             <h1
               ref={h1Ref}
-              className="text-text-0 mb-8"
+              className="text-[#F0F4F8] mb-8"
               style={{
                 fontSize: "clamp(36px, 4.5vw, 64px)",
                 fontWeight: 900,
@@ -161,7 +161,7 @@ export default function AboutPage() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-text-2 leading-relaxed max-w-2xl"
+              className="text-[#8896AB] leading-relaxed max-w-2xl"
               style={{ fontSize: "16px", lineHeight: 1.7 }}
             >
               CYBERAIQ AG is founded by serial entrepreneurs and hyperscaler leaders who have
@@ -186,11 +186,11 @@ export default function AboutPage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-14"
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-4">
               Accomplishments
             </p>
             <h2
-              className="text-text-0"
+              className="text-[#F0F4F8]"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -225,11 +225,11 @@ export default function AboutPage() {
                     border: "1px solid rgba(244,121,32,0.25)",
                   }}
                 >
-                  <span className="text-accent text-xs font-bold">
+                  <span className="text-[#F47920] text-xs font-bold">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <p className="text-text-2 leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+                <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
                   {item}
                 </p>
               </motion.div>
@@ -240,7 +240,7 @@ export default function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            className="text-text-2 leading-relaxed max-w-3xl"
+            className="text-[#8896AB] leading-relaxed max-w-3xl"
             style={{ fontSize: "16px", lineHeight: 1.7 }}
           >
             We bring together deep cyber expertise, AI-first thinking, and hyperscaler-native
@@ -259,11 +259,11 @@ export default function AboutPage() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
             >
-              <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
+              <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-4">
                 Vision &amp; Mission
               </p>
               <h2
-                className="text-text-0 mb-8"
+                className="text-[#F0F4F8] mb-8"
                 style={{
                   fontSize: "clamp(28px, 3.5vw, 48px)",
                   fontWeight: 800,
@@ -275,19 +275,19 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-6">
                 <div>
-                  <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-2">
+                  <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-2">
                     Vision
                   </p>
-                  <p className="text-text-2 leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+                  <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
                     To become the world&apos;s most trusted partner for AI-native, cloud-first
                     cyber transformation.
                   </p>
                 </div>
                 <div>
-                  <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-2">
+                  <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-2">
                     Mission
                   </p>
-                  <p className="text-text-2 leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+                  <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
                     To enable organizations to create trust, resilience, and intelligence through the
                     convergence of AI, Cloud, Cyber, Data, Quantum and Automation.
                   </p>
@@ -309,21 +309,21 @@ export default function AboutPage() {
                   backdropFilter: "blur(10px)",
                 }}
               >
-                <p className="text-text-0 font-semibold mb-6 text-[11px] uppercase tracking-[0.15em]">
+                <p className="text-[#F0F4F8] font-semibold mb-6 text-[11px] uppercase tracking-[0.15em]">
                   Our Philosophy
                 </p>
-                <p className="text-text-2 leading-relaxed mb-6" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+                <p className="text-[#8896AB] leading-relaxed mb-6" style={{ fontSize: "16px", lineHeight: 1.7 }}>
                   CYBERAIQ AG exists to help organizations converge AI, Cloud, Cyber and Quantum
                   into a single strategic advantage — with ethics, governance, and regulatory
                   alignment built in from day one.
                 </p>
-                <p className="text-text-2 leading-relaxed mb-8" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+                <p className="text-[#8896AB] leading-relaxed mb-8" style={{ fontSize: "16px", lineHeight: 1.7 }}>
                   We don&apos;t operate security — we enable secure transformation by architecting
                   resilience, trust, and long-term adaptability.
                 </p>
                 <div className="pt-6 border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
                   <p
-                    className="text-text-0/60 text-sm italic leading-relaxed border-l-2 pl-4"
+                    className="text-[#F0F4F8]/60 text-sm italic leading-relaxed border-l-2 pl-4"
                     style={{ borderColor: "rgba(244,121,32,0.4)" }}
                   >
                     &ldquo;Security is no longer a function. It is a cloud, data, automation and
@@ -349,11 +349,11 @@ export default function AboutPage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-14"
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#F47920] mb-4">
               What Makes Us Different
             </p>
             <h2
-              className="text-text-0"
+              className="text-[#F0F4F8]"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -392,8 +392,8 @@ export default function AboutPage() {
                 >
                   {item.icon}
                 </div>
-                <h3 className="text-text-0 font-semibold mb-3 leading-snug">{item.title}</h3>
-                <p className="text-text-2 text-sm leading-relaxed">{item.description}</p>
+                <h3 className="text-[#F0F4F8] font-semibold mb-3 leading-snug">{item.title}</h3>
+                <p className="text-[#8896AB] text-sm leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -410,11 +410,11 @@ export default function AboutPage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-14"
           >
-            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-[#2B7EC1] mb-4">
               Leadership
             </p>
             <h2
-              className="text-text-0"
+              className="text-[#F0F4F8]"
               style={{
                 fontSize: "clamp(28px, 3.5vw, 48px)",
                 fontWeight: 800,
@@ -438,12 +438,12 @@ export default function AboutPage() {
                 border: "1px solid rgba(255,255,255,0.06)",
               }}
             >
-              <p className="text-text-2 leading-relaxed mb-6" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+              <p className="text-[#8896AB] leading-relaxed mb-6" style={{ fontSize: "16px", lineHeight: 1.7 }}>
                 CYBERAIQ AG is led by practitioners — not operators. Our leadership team combines
                 deep hyperscaler experience, global cyber and cloud transformation leadership, and
                 proven entrepreneurial success.
               </p>
-              <p className="text-text-2 leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+              <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "16px", lineHeight: 1.7 }}>
                 We have built, scaled, and transformed at the highest level — and we bring that
                 experience to every engagement.
               </p>
@@ -470,7 +470,7 @@ export default function AboutPage() {
                     className="w-2 h-2 rounded-full flex-shrink-0"
                     style={{ background: item.color }}
                   />
-                  <p className="text-text-2 text-sm leading-relaxed">{item.label}</p>
+                  <p className="text-[#8896AB] text-sm leading-relaxed">{item.label}</p>
                 </motion.div>
               ))}
             </motion.div>
