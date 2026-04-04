@@ -3,11 +3,11 @@
 import { motion } from "framer-motion";
 import Hero from "@/components/Hero";
 import RealitySection from "@/components/RealitySection";
-import ServicesSection from "@/components/ServicesSection";
+import PillarsSection from "@/components/PillarsSection";
 import DifferentiatorSection from "@/components/DifferentiatorSection";
-import WhoWeAreSection from "@/components/WhoWeAreSection";
+import HyperscalerTicker from "@/components/HyperscalerTicker";
 import StatsSection from "@/components/StatsSection";
-import PartnersSection from "@/components/PartnersSection";
+import WhoWeAreSection from "@/components/WhoWeAreSection";
 import BlogSection from "@/components/BlogSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
@@ -23,11 +23,11 @@ export default function Home() {
     >
       <Hero />
       <RealitySection />
-      <ServicesSection />
+      <PillarsSection />
       <DifferentiatorSection />
-      <WhoWeAreSection />
+      <HyperscalerTicker />
       <StatsSection />
-      <PartnersSection />
+      <WhoWeAreSection />
       <BlogSection />
       <FAQSection />
       <CTASection />

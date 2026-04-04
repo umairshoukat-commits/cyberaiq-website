@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { fadeUp } from "@/lib/variants";
 
 const partners = [
   {
@@ -11,7 +12,7 @@ const partners = [
         <rect x="13.5" y="2" width="12" height="12" fill="#7FBA00" />
         <rect x="0" y="15.5" width="12" height="12" fill="#00A4EF" />
         <rect x="13.5" y="15.5" width="12" height="12" fill="#FFB900" />
-        <text x="32" y="19" fill="rgba(240,244,248,0.9)" fontSize="14" fontFamily="'Segoe UI',system-ui,-apple-system,sans-serif" fontWeight="600">Microsoft</text>
+        <text x="32" y="19" fill="rgba(240,244,248,0.9)" fontSize="14" fontFamily="system-ui,-apple-system,sans-serif" fontWeight="600">Microsoft</text>
       </svg>
     ),
   },
@@ -34,95 +35,96 @@ const partners = [
         <circle cx="10" cy="14" r="9" stroke="#FBBC05" strokeWidth="3" fill="none" strokeDasharray="14 42" strokeDashoffset="21" />
         <circle cx="10" cy="14" r="9" stroke="#34A853" strokeWidth="3" fill="none" strokeDasharray="14 42" strokeDashoffset="35" />
         <line x1="10" y1="14" x2="19" y2="14" stroke="#4285F4" strokeWidth="3" strokeLinecap="round" />
-        <text x="26" y="19" fill="rgba(240,244,248,0.9)" fontSize="14" fontFamily="'Google Sans',system-ui,-apple-system,sans-serif" fontWeight="500">Google Cloud</text>
+        <text x="26" y="19" fill="rgba(240,244,248,0.9)" fontSize="14" fontFamily="system-ui,-apple-system,sans-serif" fontWeight="500">Google Cloud</text>
       </svg>
     ),
   },
 ];
 
+// 6 copies for seamless loop
 const tickerItems = [...partners, ...partners, ...partners, ...partners, ...partners, ...partners];
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
-  },
-};
-
-export default function PartnersSection() {
+export default function HyperscalerTicker() {
   return (
     <section className="relative overflow-hidden" style={{ padding: "160px 0" }} id="partners">
       <div className="max-w-[1280px] mx-auto px-6 md:px-20 mb-14">
         <motion.div
-          variants={sectionVariants}
+          variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           className="text-center"
         >
-          <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-[#2B7EC1] mb-4">
+          <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-4">
             Hyperscaler Partners
           </p>
-          <h2 style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }} className="text-[#F0F4F8] mb-5">
-            Built on world-class infrastructure
+          <h2
+            className="text-text-0 mb-5"
+            style={{
+              fontSize: "clamp(28px, 3.5vw, 48px)",
+              fontWeight: 800,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.1,
+              textWrap: "balance",
+            }}
+          >
+            Hyperscaler&apos;s at the core
           </h2>
-          <p className="text-[#8896AB] max-w-xl mx-auto leading-relaxed" style={{ fontSize: "18px" }}>
+          <p className="text-text-2 max-w-xl mx-auto leading-[1.7]" style={{ fontSize: "16px" }}>
             CYBERAIQ AG is built natively on the world&apos;s leading hyperscalers, forming the
             foundation of our architecture, automation, and scale.
           </p>
         </motion.div>
       </div>
 
-      {/* Ticker */}
+      {/* Ticker with CSS animation */}
       <div className="relative mb-16">
-        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style={{ background: "linear-gradient(90deg, #080B10, transparent)" }} />
-        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style={{ background: "linear-gradient(-90deg, #080B10, transparent)" }} />
+        {/* Fade edges */}
+        <div
+          className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+          style={{ background: "linear-gradient(90deg, var(--color-surface-0), transparent)" }}
+        />
+        <div
+          className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+          style={{ background: "linear-gradient(-90deg, var(--color-surface-0), transparent)" }}
+        />
 
         <div className="flex overflow-hidden">
-          <motion.div
+          <div
             className="flex gap-16 items-center shrink-0"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 22, ease: "linear", repeat: Infinity }}
+            style={{
+              animation: "ticker 25s linear infinite",
+            }}
           >
             {tickerItems.map((partner, i) => (
               <div
                 key={i}
-                className="flex items-center justify-center px-10 py-5 rounded-xl shrink-0"
-                style={{
-                  background: "rgba(255,255,255,0.02)",
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  opacity: 0.55,
-                  minWidth: 200,
-                }}
+                className="flex items-center justify-center px-10 py-5 rounded-xl shrink-0 bg-surface-1 border border-[var(--color-border)]"
+                style={{ opacity: 0.55, minWidth: 200 }}
               >
                 {partner.logo}
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 
+      {/* Partner cards */}
       <motion.div
-        variants={sectionVariants}
+        variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         className="max-w-4xl mx-auto px-6 md:px-20 grid grid-cols-1 md:grid-cols-3 gap-6"
       >
         {[
-          { name: "Microsoft", color: "#F25022", subtitle: "Azure, Copilot & Microsoft Security" },
-          { name: "Amazon Web Services", color: "#FF9900", subtitle: "AWS Security, GuardDuty & WAF" },
-          { name: "Google Cloud", color: "#4285F4", subtitle: "Chronicle, Security Command Center" },
+          { name: "Microsoft", color: "#F25022" },
+          { name: "Amazon Web Services", color: "#FF9900" },
+          { name: "Google Cloud", color: "#4285F4" },
         ].map((p) => (
           <div
             key={p.name}
-            className="p-6 rounded-2xl text-center"
-            style={{
-              background: "rgba(255,255,255,0.02)",
-              border: "1px solid rgba(255,255,255,0.06)",
-            }}
+            className="p-6 rounded-2xl bg-surface-1 border border-[var(--color-border)] text-center"
           >
             <div
               className="w-10 h-10 rounded-full mx-auto mb-4 flex items-center justify-center"
@@ -130,11 +132,21 @@ export default function PartnersSection() {
             >
               <div className="w-3 h-3 rounded-full" style={{ background: p.color }} />
             </div>
-            <h3 className="text-[#F0F4F8] font-semibold mb-2 text-sm">{p.name}</h3>
-            <p className="text-[#8896AB] text-xs leading-relaxed">{p.subtitle}</p>
+            <h3 className="text-text-0 font-semibold text-sm">{p.name}</h3>
           </div>
         ))}
       </motion.div>
+
+      <style jsx>{`
+        @keyframes ticker {
+          from {
+            transform: translateX(0%);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </section>
   );
 }

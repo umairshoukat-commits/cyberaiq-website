@@ -2,136 +2,189 @@
 
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import {
+  EffectComposer,
+  Bloom,
+  ChromaticAberration,
+  Vignette,
+} from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
 import * as THREE from "three";
 
-// Node data: label, position, color
-const NODES = [
-  { id: 0, label: "AI", pos: [0, 0, 0] as [number, number, number], color: "#F47920" },
-  { id: 1, label: "Cloud", pos: [3, 1.5, -1] as [number, number, number], color: "#2B7EC1" },
-  { id: 2, label: "Cyber", pos: [-3, 1, 0.5] as [number, number, number], color: "#F47920" },
-  { id: 3, label: "Quantum", pos: [1, -2.5, 1] as [number, number, number], color: "#2B7EC1" },
-  { id: 4, label: "", pos: [-1.5, 2.5, -2] as [number, number, number], color: "#F47920" },
-  { id: 5, label: "", pos: [2.5, -1, 2] as [number, number, number], color: "#2B7EC1" },
-  { id: 6, label: "", pos: [-2, -1.5, -1.5] as [number, number, number], color: "#F47920" },
-  { id: 7, label: "", pos: [0.5, 2, 2.5] as [number, number, number], color: "#2B7EC1" },
-];
+/* ---------- Fibonacci sphere node positions ---------- */
+const NODE_COUNT = 60;
+const SPHERE_RADIUS = 3.2;
+const CONNECT_DIST = 1.5;
 
-const EDGES = [
-  [0, 1], [0, 2], [0, 3], [1, 4], [1, 5], [2, 6],
-  [3, 5], [3, 7], [4, 7], [5, 6], [6, 2], [7, 0],
-];
+function fibonacciSphere(count: number, radius: number): THREE.Vector3[] {
+  const points: THREE.Vector3[] = [];
+  const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+  for (let i = 0; i < count; i++) {
+    const y = 1 - (i / (count - 1)) * 2; // -1 to 1
+    const r = Math.sqrt(1 - y * y);
+    const theta = goldenAngle * i;
+    points.push(
+      new THREE.Vector3(
+        Math.cos(theta) * r * radius,
+        y * radius,
+        Math.sin(theta) * r * radius
+      )
+    );
+  }
+  return points;
+}
 
-function NodeMesh({ pos, color, pulseOffset }: { pos: [number, number, number]; color: string; pulseOffset: number }) {
-  const meshRef = useRef<THREE.Mesh>(null);
+/* ---------- Custom fresnel shader ---------- */
+const nodeVertexShader = /* glsl */ `
+  varying vec3 vNormal;
+  varying vec3 vViewDir;
+  void main() {
+    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+    vNormal = normalize(normalMatrix * normal);
+    vViewDir = normalize(-mvPosition.xyz);
+    gl_Position = projectionMatrix * mvPosition;
+  }
+`;
+
+const nodeFragmentShader = /* glsl */ `
+  uniform vec3 uColor;
+  uniform float uPulse;
+  varying vec3 vNormal;
+  varying vec3 vViewDir;
+  void main() {
+    float fresnel = pow(1.0 - max(dot(vViewDir, vNormal), 0.0), 2.5);
+    float intensity = (0.15 + fresnel * 0.6) * uPulse;
+    gl_FragColor = vec4(uColor * intensity, 1.0);
+  }
+`;
+
+/* ---------- Nodes (instanced for perf) ---------- */
+function Nodes({ positions }: { positions: THREE.Vector3[] }) {
+  const meshRef = useRef<THREE.InstancedMesh>(null);
+  const dummy = useMemo(() => new THREE.Object3D(), []);
+  const materialRef = useRef<THREE.ShaderMaterial>(null);
+
+  const uniforms = useMemo(
+    () => ({
+      uColor: { value: new THREE.Color("#F47920").multiplyScalar(1.5) },
+      uPulse: { value: 1.0 },
+    }),
+    []
+  );
+
+  // Set initial transforms
+  useMemo(() => {
+    // Will be set on first frame
+  }, []);
 
   useFrame(({ clock }) => {
     if (!meshRef.current) return;
     const t = clock.getElapsedTime();
-    const scale = 1 + Math.sin(t * 1.8 + pulseOffset) * 0.07;
-    meshRef.current.scale.setScalar(scale);
+
+    // Update pulse uniform
+    if (materialRef.current) {
+      materialRef.current.uniforms.uPulse.value =
+        Math.sin(t * 0.5) * 0.3 + 0.7;
+    }
+
+    // Update each instance
+    for (let i = 0; i < positions.length; i++) {
+      dummy.position.copy(positions[i]);
+      dummy.updateMatrix();
+      meshRef.current.setMatrixAt(i, dummy.matrix);
+    }
+    meshRef.current.instanceMatrix.needsUpdate = true;
   });
 
-  const col = useMemo(() => new THREE.Color(color), [color]);
-
   return (
-    <mesh ref={meshRef} position={pos}>
-      <sphereGeometry args={[0.10, 16, 16]} />
-      <meshStandardMaterial
-        color={col}
-        emissive={col}
-        emissiveIntensity={2.2}
+    <instancedMesh ref={meshRef} args={[undefined, undefined, positions.length]}>
+      <icosahedronGeometry args={[0.06, 1]} />
+      <shaderMaterial
+        ref={materialRef}
+        vertexShader={nodeVertexShader}
+        fragmentShader={nodeFragmentShader}
+        uniforms={uniforms}
+        toneMapped={false}
         transparent
-        opacity={0.7}
-        roughness={0.2}
-        metalness={0.4}
       />
-    </mesh>
+    </instancedMesh>
   );
 }
 
-function Edges() {
-  const lineRefs = useRef<THREE.Line[]>([]);
+/* ---------- Edges via LineSegments ---------- */
+function Edges({ positions }: { positions: THREE.Vector3[] }) {
+  const lineRef = useRef<THREE.LineSegments>(null);
 
-  const edges = useMemo(() => {
-    return EDGES.map(([a, b]) => {
-      const start = new THREE.Vector3(...NODES[a].pos);
-      const end = new THREE.Vector3(...NODES[b].pos);
-      const points = [];
-      for (let i = 0; i <= 20; i++) {
-        points.push(start.clone().lerp(end, i / 20));
+  const geometry = useMemo(() => {
+    const verts: number[] = [];
+    for (let i = 0; i < positions.length; i++) {
+      for (let j = i + 1; j < positions.length; j++) {
+        if (positions[i].distanceTo(positions[j]) < CONNECT_DIST) {
+          verts.push(
+            positions[i].x, positions[i].y, positions[i].z,
+            positions[j].x, positions[j].y, positions[j].z
+          );
+        }
       }
-      const geometry = new THREE.BufferGeometry().setFromPoints(points);
-      return { geometry, colorA: NODES[a].color, colorB: NODES[b].color };
-    });
-  }, []);
-
-  useFrame(({ clock }) => {
-    const t = clock.getElapsedTime();
-    lineRefs.current.forEach((line, i) => {
-      if (!line) return;
-      const mat = line.material as THREE.LineBasicMaterial;
-      mat.opacity = 0.15 + 0.12 * Math.sin(t * 0.8 + i * 0.5);
-    });
-  });
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(verts, 3)
+    );
+    return geo;
+  }, [positions]);
 
   return (
-    <>
-      {edges.map((edge, i) => (
-        <primitive
-          key={i}
-          object={new THREE.Line(
-            edge.geometry,
-            new THREE.LineBasicMaterial({
-              color: new THREE.Color(i % 2 === 0 ? "#F47920" : "#2B7EC1"),
-              transparent: true,
-              opacity: 0.2,
-              linewidth: 1,
-            })
-          )}
-          ref={(el: THREE.Line) => {
-            if (el) lineRefs.current[i] = el;
-          }}
-        />
-      ))}
-    </>
+    <lineSegments ref={lineRef} geometry={geometry}>
+      <lineBasicMaterial
+        color="#F47920"
+        transparent
+        opacity={0.08}
+        depthWrite={false}
+      />
+    </lineSegments>
   );
 }
 
+/* ---------- Scene wrapper ---------- */
 function Scene() {
   const groupRef = useRef<THREE.Group>(null);
 
-  useFrame(({ clock }) => {
+  const positions = useMemo(
+    () => fibonacciSphere(NODE_COUNT, SPHERE_RADIUS),
+    []
+  );
+
+  useFrame(() => {
     if (!groupRef.current) return;
-    const t = clock.getElapsedTime();
-    groupRef.current.rotation.y = t * 0.08;
-    groupRef.current.rotation.x = Math.sin(t * 0.05) * 0.15;
+    groupRef.current.rotation.y += 0.0003;
   });
 
   return (
     <group ref={groupRef}>
-      <Edges />
-      {NODES.map((node, i) => (
-        <NodeMesh key={node.id} pos={node.pos} color={node.color} pulseOffset={i * 0.8} />
-      ))}
+      <Nodes positions={positions} />
+      <Edges positions={positions} />
     </group>
   );
 }
 
+/* ---------- Main export ---------- */
 export default function NetworkGraph() {
   return (
     <>
-      <ambientLight intensity={0.2} />
-      <pointLight position={[10, 10, 10]} intensity={0.5} color="#F47920" />
-      <pointLight position={[-10, -10, -10]} intensity={0.3} color="#2B7EC1" />
       <Scene />
       <EffectComposer>
         <Bloom
-          luminanceThreshold={0.35}
-          luminanceSmoothing={0.9}
-          intensity={1.8}
-          radius={0.6}
+          luminanceThreshold={1.0}
+          intensity={0.4}
+          mipmapBlur
         />
+        <ChromaticAberration
+          blendFunction={BlendFunction.NORMAL}
+          offset={new THREE.Vector2(0.0003, 0.0003)}
+        />
+        <Vignette darkness={0.8} offset={0.3} />
       </EffectComposer>
     </>
   );

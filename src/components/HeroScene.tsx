@@ -7,9 +7,9 @@ import NetworkGraph from "./NetworkGraph";
 export default function HeroScene() {
   return (
     <Canvas
-      camera={{ position: [0, 0, 8], fov: 60 }}
+      camera={{ position: [0, 0, 5], fov: 60 }}
       dpr={[1, 1.5]}
-      gl={{ antialias: true, alpha: true }}
+      gl={{ antialias: false, alpha: true }}
       style={{ position: "absolute", inset: 0 }}
     >
       <Suspense fallback={null}>

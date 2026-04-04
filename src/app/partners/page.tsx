@@ -1,8 +1,11 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { gsap, SplitText } from "@/lib/gsap";
+import { fadeUp } from "@/lib/variants";
 
 const partners = [
   {
@@ -14,11 +17,20 @@ const partners = [
         <rect x="14.5" y="0" width="13" height="13" fill="#7FBA00" />
         <rect x="0" y="14.5" width="13" height="13" fill="#00A4EF" />
         <rect x="14.5" y="14.5" width="13" height="13" fill="#FFB900" />
-        <text x="34" y="20" fill="#F0F4F8" fontSize="14" fontFamily="'Segoe UI',system-ui,sans-serif" fontWeight="600">Microsoft</text>
+        <text
+          x="34"
+          y="20"
+          fill="#F0F4F8"
+          fontSize="14"
+          fontFamily="'Segoe UI',system-ui,sans-serif"
+          fontWeight="600"
+        >
+          Microsoft
+        </text>
       </svg>
     ),
     description:
-      "Microsoft forms the backbone of our security and AI architecture — spanning Azure, Microsoft Security, and Copilot. We help organizations maximize the full power of the Microsoft cloud.",
+      "Microsoft forms the backbone of our security and AI architecture — spanning Azure, Microsoft Security, and Copilot.",
     solutions: [
       "Microsoft Azure & Security Center",
       "Microsoft Sentinel",
@@ -33,13 +45,36 @@ const partners = [
     color: "#FF9900",
     logo: (
       <svg width="100" height="36" viewBox="0 0 100 36" fill="none">
-        <text x="0" y="22" fill="#F0F4F8" fontSize="20" fontFamily="system-ui,sans-serif" fontWeight="800" letterSpacing="0.5">aws</text>
-        <path d="M4 28 Q22 33.5 44 30" stroke="#FF9900" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-        <path d="M41 28 l4.5 2.5 l-2 3" stroke="#FF9900" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <text
+          x="0"
+          y="22"
+          fill="#F0F4F8"
+          fontSize="20"
+          fontFamily="system-ui,sans-serif"
+          fontWeight="800"
+          letterSpacing="0.5"
+        >
+          aws
+        </text>
+        <path
+          d="M4 28 Q22 33.5 44 30"
+          stroke="#FF9900"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          fill="none"
+        />
+        <path
+          d="M41 28 l4.5 2.5 l-2 3"
+          stroke="#FF9900"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
       </svg>
     ),
     description:
-      "Our AWS partnership enables us to deliver security architecture, compliance, and DevSecOps solutions on the world\u2019s leading cloud platform — securing workloads end to end.",
+      "Our AWS partnership enables security architecture, compliance, and DevSecOps on the world\u2019s leading cloud platform.",
     solutions: [
       "AWS Security Hub",
       "Amazon GuardDuty",
@@ -54,16 +89,69 @@ const partners = [
     color: "#4285F4",
     logo: (
       <svg width="160" height="30" viewBox="0 0 160 30" fill="none">
-        <circle cx="10" cy="15" r="9" stroke="#4285F4" strokeWidth="3" fill="none" strokeDasharray="14 42" strokeDashoffset="-7" />
-        <circle cx="10" cy="15" r="9" stroke="#EA4335" strokeWidth="3" fill="none" strokeDasharray="14 42" strokeDashoffset="7" />
-        <circle cx="10" cy="15" r="9" stroke="#FBBC05" strokeWidth="3" fill="none" strokeDasharray="14 42" strokeDashoffset="21" />
-        <circle cx="10" cy="15" r="9" stroke="#34A853" strokeWidth="3" fill="none" strokeDasharray="14 42" strokeDashoffset="35" />
-        <line x1="10" y1="15" x2="19" y2="15" stroke="#4285F4" strokeWidth="3" strokeLinecap="round" />
-        <text x="26" y="20" fill="#F0F4F8" fontSize="14" fontFamily="system-ui,sans-serif" fontWeight="500">Google Cloud</text>
+        <circle
+          cx="10"
+          cy="15"
+          r="9"
+          stroke="#4285F4"
+          strokeWidth="3"
+          fill="none"
+          strokeDasharray="14 42"
+          strokeDashoffset="-7"
+        />
+        <circle
+          cx="10"
+          cy="15"
+          r="9"
+          stroke="#EA4335"
+          strokeWidth="3"
+          fill="none"
+          strokeDasharray="14 42"
+          strokeDashoffset="7"
+        />
+        <circle
+          cx="10"
+          cy="15"
+          r="9"
+          stroke="#FBBC05"
+          strokeWidth="3"
+          fill="none"
+          strokeDasharray="14 42"
+          strokeDashoffset="21"
+        />
+        <circle
+          cx="10"
+          cy="15"
+          r="9"
+          stroke="#34A853"
+          strokeWidth="3"
+          fill="none"
+          strokeDasharray="14 42"
+          strokeDashoffset="35"
+        />
+        <line
+          x1="10"
+          y1="15"
+          x2="19"
+          y2="15"
+          stroke="#4285F4"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+        <text
+          x="26"
+          y="20"
+          fill="#F0F4F8"
+          fontSize="14"
+          fontFamily="system-ui,sans-serif"
+          fontWeight="500"
+        >
+          Google Cloud
+        </text>
       </svg>
     ),
     description:
-      "Our Google Cloud partnership covers Chronicle SIEM, Security Command Center, and Workspace security — leveraging Google\u2019s AI-native security capabilities for enterprise clients.",
+      "Our Google Cloud partnership covers Chronicle SIEM, Security Command Center, and AI-native security.",
     solutions: [
       "Google Chronicle SIEM",
       "Security Command Center",
@@ -75,16 +163,21 @@ const partners = [
   },
 ];
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
-  },
-};
-
 export default function PartnersPage() {
+  const h1Ref = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (!h1Ref.current) return;
+    const split = SplitText.create(h1Ref.current, { type: "words", mask: "words" });
+    gsap.from(split.words, {
+      y: "100%",
+      duration: 1.2,
+      stagger: 0.04,
+      ease: "expo.out",
+    });
+    return () => split.revert();
+  }, []);
+
   return (
     <motion.main
       initial={{ opacity: 0 }}
@@ -93,7 +186,10 @@ export default function PartnersPage() {
       transition={{ duration: 0.4 }}
     >
       {/* Hero */}
-      <section className="relative overflow-hidden" style={{ paddingTop: "180px", paddingBottom: "100px" }}>
+      <section
+        className="relative overflow-hidden"
+        style={{ paddingTop: "180px", paddingBottom: "100px" }}
+      >
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -102,27 +198,33 @@ export default function PartnersPage() {
           }}
         />
         <div className="max-w-[1280px] mx-auto px-6 md:px-20">
-          <motion.div
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
-            className="text-center max-w-3xl mx-auto"
-          >
-            <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-[#2B7EC1] mb-6">
+          <div className="text-center max-w-3xl mx-auto">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-secondary mb-6">
               Partners
             </p>
             <h1
-              className="text-[#F0F4F8] mb-6"
-              style={{ fontSize: "clamp(40px, 5vw, 72px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.05, textWrap: "balance" } as React.CSSProperties}
+              ref={h1Ref}
+              className="text-text-0 mb-6"
+              style={{
+                fontSize: "clamp(36px, 4.5vw, 64px)",
+                fontWeight: 900,
+                letterSpacing: "-0.03em",
+                lineHeight: 1.1,
+              }}
             >
-              World-class{" "}
-              <span className="gradient-text">partnerships</span>
+              Hyperscaler&apos;s at the core
             </h1>
-            <p className="text-[#8896AB] leading-relaxed max-w-xl mx-auto" style={{ fontSize: "18px" }}>
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="text-text-2 leading-relaxed max-w-xl mx-auto"
+              style={{ fontSize: "16px", lineHeight: 1.7 }}
+            >
               CYBERAIQ AG is built natively on the world&apos;s leading hyperscalers, forming the
               foundation of our architecture, automation, and scale.
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
         </div>
       </section>
 
@@ -131,11 +233,14 @@ export default function PartnersPage() {
         <section
           key={partner.name}
           className="relative"
-          style={{ padding: "160px 0", background: i % 2 === 0 ? "rgba(255,255,255,0.008)" : "transparent" }}
+          style={{
+            padding: "160px 0",
+            background: i % 2 === 0 ? "rgba(255,255,255,0.008)" : "transparent",
+          }}
         >
           <div className="max-w-[1280px] mx-auto px-6 md:px-20">
             <motion.div
-              variants={sectionVariants}
+              variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
@@ -143,10 +248,21 @@ export default function PartnersPage() {
             >
               <div className={i % 2 === 1 ? "lg:order-2" : ""}>
                 <div className="mb-6">{partner.logo}</div>
-                <h2 className="text-[#F0F4F8] mb-6" style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+                <h2
+                  className="text-text-0 mb-6"
+                  style={{
+                    fontSize: "clamp(28px, 3.5vw, 48px)",
+                    fontWeight: 800,
+                    letterSpacing: "-0.02em",
+                    lineHeight: 1.1,
+                  }}
+                >
                   {partner.name}
                 </h2>
-                <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "16px" }}>
+                <p
+                  className="text-text-2 leading-relaxed"
+                  style={{ fontSize: "16px", lineHeight: 1.7 }}
+                >
                   {partner.description}
                 </p>
               </div>
@@ -160,7 +276,7 @@ export default function PartnersPage() {
                   boxShadow: `inset 0 2px 0 0 ${partner.color}25`,
                 }}
               >
-                <h3 className="text-[#F0F4F8] font-semibold mb-6 text-[11px] uppercase tracking-[0.2em]">
+                <h3 className="text-text-0 font-semibold mb-6 text-[11px] uppercase tracking-[0.15em]">
                   Solutions &amp; Platforms
                 </h3>
                 <ul className="space-y-4">
@@ -173,9 +289,12 @@ export default function PartnersPage() {
                           border: `1px solid ${partner.color}25`,
                         }}
                       >
-                        <div className="w-1.5 h-1.5 rounded-full" style={{ background: partner.color }} />
+                        <div
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{ background: partner.color }}
+                        />
                       </div>
-                      <span className="text-[#8896AB] text-sm">{s}</span>
+                      <span className="text-text-2 text-sm">{s}</span>
                     </li>
                   ))}
                 </ul>
@@ -188,21 +307,30 @@ export default function PartnersPage() {
       {/* CTA */}
       <section className="relative" style={{ padding: "160px 0" }}>
         <motion.div
-          variants={sectionVariants}
+          variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           className="max-w-[1280px] mx-auto px-6 md:px-20 text-center"
         >
-          <h2 className="text-[#F0F4F8] mb-4" style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+          <h2
+            className="text-text-0 mb-4"
+            style={{
+              fontSize: "clamp(28px, 3.5vw, 48px)",
+              fontWeight: 800,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.1,
+            }}
+          >
             Partner with CYBERAIQ AG
           </h2>
-          <p className="text-[#8896AB] mb-8" style={{ fontSize: "18px" }}>
-            Are you a technology vendor or integrator looking to build joint solutions? Let&apos;s talk.
+          <p className="text-text-2 mb-8" style={{ fontSize: "16px", lineHeight: 1.7 }}>
+            Are you a technology vendor or integrator looking to build joint solutions?
+            Let&apos;s talk.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-[#F47920] text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:bg-[#e06810]"
+            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-accent text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:bg-accent-dim"
             style={{ fontSize: "16px" }}
           >
             Get in Touch

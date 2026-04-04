@@ -1,8 +1,11 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { gsap, SplitText } from "@/lib/gsap";
+import { fadeUp } from "@/lib/variants";
 
 const services = [
   {
@@ -34,7 +37,8 @@ const services = [
       "LLM Integration Services for enterprise-scale AI adoption with privacy and compliance by design",
       "Security workflow automation & Data readiness for AI adoption",
     ],
-    tagline: "AI is not a tool. It is the operating model — secure, ethical, and accountable by design",
+    tagline:
+      "AI is not a tool. It is the operating model — secure, ethical, and accountable by design",
     color: "#2B7EC1",
   },
   {
@@ -51,7 +55,8 @@ const services = [
       "Landing zone and architecture design",
       "Workload adoption and migration roadmaps",
     ],
-    tagline: "Cloud is the foundation. Strategy defines the path. Execution creates scale.",
+    tagline:
+      "Cloud is the foundation. Strategy defines the path. Execution creates scale.",
     color: "#F47920",
   },
   {
@@ -59,8 +64,7 @@ const services = [
     tag: "04",
     title: "Quantum Readiness & Cryptographic Transformation",
     subtitle: "Prepare for the post-quantum era",
-    description:
-      "Quantum is not theoretical. It is a timeline risk.",
+    description: "Quantum is not theoretical. It is a timeline risk.",
     capabilities: [
       "Quantum risk assessments",
       "Post-quantum cryptography readiness",
@@ -88,16 +92,21 @@ const services = [
   },
 ];
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
-  },
-};
-
 export default function ServicesPage() {
+  const h1Ref = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (!h1Ref.current) return;
+    const split = SplitText.create(h1Ref.current, { type: "words", mask: "words" });
+    gsap.from(split.words, {
+      y: "100%",
+      duration: 1.2,
+      stagger: 0.04,
+      ease: "expo.out",
+    });
+    return () => split.revert();
+  }, []);
+
   return (
     <motion.main
       initial={{ opacity: 0 }}
@@ -106,7 +115,10 @@ export default function ServicesPage() {
       transition={{ duration: 0.4 }}
     >
       {/* Hero */}
-      <section className="relative overflow-hidden" style={{ paddingTop: "180px", paddingBottom: "100px" }}>
+      <section
+        className="relative overflow-hidden"
+        style={{ paddingTop: "180px", paddingBottom: "100px" }}
+      >
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -115,26 +127,33 @@ export default function ServicesPage() {
           }}
         />
         <div className="max-w-[1280px] mx-auto px-6 md:px-20">
-          <motion.div
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
-            className="max-w-3xl"
-          >
-            <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-[#F47920] mb-6">
+          <div className="max-w-3xl">
+            <p className="text-[11px] tracking-[0.15em] uppercase font-semibold text-accent mb-6">
               Services
             </p>
             <h1
-              className="text-[#F0F4F8] mb-6"
-              style={{ fontSize: "clamp(40px, 5vw, 72px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.05 }}
+              ref={h1Ref}
+              className="text-text-0 mb-6"
+              style={{
+                fontSize: "clamp(36px, 4.5vw, 64px)",
+                fontWeight: 900,
+                letterSpacing: "-0.03em",
+                lineHeight: 1.1,
+              }}
             >
-              Five pillars.{" "}
-              <span className="gradient-text">One vision.</span>
+              Our Services
             </h1>
-            <p className="text-[#8896AB] leading-relaxed" style={{ fontSize: "18px" }}>
-              A unified security transformation practice built for the complexity of the modern enterprise.
-            </p>
-          </motion.div>
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="text-text-2 leading-relaxed"
+              style={{ fontSize: "16px", lineHeight: 1.7 }}
+            >
+              A unified security transformation practice built for the complexity
+              of the modern enterprise.
+            </motion.p>
+          </div>
         </div>
       </section>
 
@@ -144,35 +163,52 @@ export default function ServicesPage() {
           key={service.id}
           id={service.id}
           className="relative overflow-hidden"
-          style={{ padding: "160px 0", background: i % 2 === 0 ? "rgba(255,255,255,0.008)" : "transparent" }}
+          style={{
+            padding: "160px 0",
+            background: i % 2 === 0 ? "rgba(255,255,255,0.008)" : "transparent",
+          }}
         >
           <div className="max-w-[1280px] mx-auto px-6 md:px-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               <motion.div
                 className={i % 2 === 1 ? "lg:order-2" : ""}
-                variants={sectionVariants}
+                variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <span className="text-6xl font-black opacity-[0.05] text-[#F0F4F8] block mb-2">
+                <span className="text-6xl font-black opacity-[0.05] text-text-0 block mb-2">
                   {service.tag}
                 </span>
                 <p
-                  className="text-[11px] tracking-[0.2em] uppercase font-semibold mb-4"
+                  className="text-[11px] tracking-[0.15em] uppercase font-semibold mb-4"
                   style={{ color: service.color }}
                 >
                   {service.subtitle}
                 </p>
-                <h2 className="text-[#F0F4F8] mb-6" style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+                <h2
+                  className="text-text-0 mb-6"
+                  style={{
+                    fontSize: "clamp(28px, 3.5vw, 48px)",
+                    fontWeight: 800,
+                    letterSpacing: "-0.02em",
+                    lineHeight: 1.1,
+                  }}
+                >
                   {service.title}
                 </h2>
-                <p className="text-[#8896AB] leading-relaxed mb-6" style={{ fontSize: "18px" }}>
+                <p
+                  className="text-text-2 leading-relaxed mb-6"
+                  style={{ fontSize: "16px", lineHeight: 1.7 }}
+                >
                   {service.description}
                 </p>
                 <p
                   className="text-sm italic leading-relaxed mb-8 border-l-2 pl-4"
-                  style={{ color: `${service.color}cc`, borderColor: `${service.color}40` }}
+                  style={{
+                    color: `${service.color}cc`,
+                    borderColor: `${service.color}40`,
+                  }}
                 >
                   &ldquo;{service.tagline}&rdquo;
                 </p>
@@ -187,14 +223,20 @@ export default function ServicesPage() {
                 >
                   Discuss this service
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </Link>
               </motion.div>
 
               <motion.div
                 className={`rounded-2xl p-8${i % 2 === 1 ? " lg:order-1" : ""}`}
-                variants={sectionVariants}
+                variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
@@ -205,7 +247,7 @@ export default function ServicesPage() {
                   boxShadow: `inset 0 2px 0 0 ${service.color}25`,
                 }}
               >
-                <h3 className="text-[#F0F4F8] font-semibold mb-6 text-[11px] uppercase tracking-[0.2em]">
+                <h3 className="text-text-0 font-semibold mb-6 text-[11px] uppercase tracking-[0.15em]">
                   Focus Areas
                 </h3>
                 <ul className="space-y-5">
@@ -213,11 +255,17 @@ export default function ServicesPage() {
                     <li key={cap} className="flex items-start gap-4">
                       <div
                         className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                        style={{ background: `${service.color}10`, border: `1px solid ${service.color}25` }}
+                        style={{
+                          background: `${service.color}10`,
+                          border: `1px solid ${service.color}25`,
+                        }}
                       >
-                        <div className="w-1.5 h-1.5 rounded-full" style={{ background: service.color }} />
+                        <div
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{ background: service.color }}
+                        />
                       </div>
-                      <span className="text-[#8896AB] leading-relaxed text-sm">{cap}</span>
+                      <span className="text-text-2 leading-relaxed text-sm">{cap}</span>
                     </li>
                   ))}
                 </ul>
@@ -230,21 +278,29 @@ export default function ServicesPage() {
       {/* CTA */}
       <section className="relative" style={{ padding: "160px 0" }}>
         <motion.div
-          variants={sectionVariants}
+          variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           className="max-w-[1280px] mx-auto px-6 md:px-20 text-center"
         >
-          <h2 className="text-[#F0F4F8] mb-4" style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+          <h2
+            className="text-text-0 mb-4"
+            style={{
+              fontSize: "clamp(28px, 3.5vw, 48px)",
+              fontWeight: 800,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.1,
+            }}
+          >
             Ready to get started?
           </h2>
-          <p className="text-[#8896AB] mb-8" style={{ fontSize: "18px" }}>
+          <p className="text-text-2 mb-8" style={{ fontSize: "16px", lineHeight: 1.7 }}>
             Talk to our experts about which services are right for your organization.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-[#F47920] text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:bg-[#e06810]"
+            className="inline-flex items-center gap-2.5 px-10 py-5 rounded-full bg-accent text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(244,121,32,0.25)] hover:shadow-[0_12px_40px_rgba(244,121,32,0.4)] hover:bg-accent-dim"
             style={{ fontSize: "16px" }}
           >
             Start a Strategic Conversation
